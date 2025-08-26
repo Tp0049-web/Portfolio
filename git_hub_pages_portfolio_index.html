@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Name – Portfolio</title>
+  <meta name="description" content="Personal portfolio website for Your Name: projects, experience, and contact." />
+  <meta property="og:title" content="Your Name – Portfolio" />
+  <meta property="og:description" content="Projects, experience, and contact information." />
+  <meta property="og:type" content="website" />
+  <style>
+    :root{
+      --bg: #0b0d10;
+      --card: #12161b;
+      --muted: #9aa4b2;
+      --text: #e8eef6;
+      --brand: #4f8cff;
+      --brand-2: #7aa2ff;
+      --ring: rgba(79,140,255,.4);
+    }
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg:#f7f9fc; --card:#ffffff; --muted:#5b6572; --text:#0f1720; --brand:#2f6bff; --brand-2:#5c8dff; --ring:rgba(47,107,255,.25);
+      }
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0; font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"; background:var(--bg); color:var(--text)}
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+    .container{max-width:1100px; margin-inline:auto; padding:24px}
+
+    /* Header */
+    header{position:sticky; top:0; backdrop-filter:blur(10px); background:color-mix(in oklab, var(--bg) 80%, transparent); border-bottom:1px solid color-mix(in oklab, var(--text) 10%, transparent); z-index:10}
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:16px}
+    .brand{font-weight:800; letter-spacing:.2px}
+    .brand b{color:var(--brand)}
+    nav ul{display:flex; list-style:none; gap:12px; padding:0; margin:0}
+    nav a{padding:10px 12px; border-radius:12px; color:var(--muted)}
+    nav a:hover, nav a:focus{outline:none; color:var(--text); background:color-mix(in oklab, var(--text) 8%, transparent)}
+    .menu-btn{display:none}
+
+    /* Hero */
+    .hero{display:grid; grid-template-columns:1.2fr .8fr; gap:36px; align-items:center; padding-block:48px}
+    .badge{display:inline-flex; align-items:center; gap:8px; font-size:.9rem; color:var(--muted); background:color-mix(in oklab, var(--brand) 15%, transparent); border:1px solid color-mix(in oklab, var(--brand) 40%, var(--bg)); padding:6px 10px; border-radius:999px}
+    .title{font-size:clamp(32px, 5vw, 54px); line-height:1.1; margin:14px 0 10px; font-weight:900}
+    .subtitle{color:var(--muted); font-size:1.05rem}
+    .cta{display:flex; flex-wrap:wrap; gap:12px; margin-top:18px}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:14px; border:1px solid color-mix(in oklab, var(--text) 10%, transparent); background:var(--card); color:var(--text)}
+    .btn.primary{background:linear-gradient(135deg, var(--brand), var(--brand-2)); border:0}
+    .btn:hover{box-shadow:0 0 0 6px var(--ring)}
+    .hero-card{background:var(--card); border:1px solid color-mix(in oklab, var(--text) 12%, transparent); border-radius:18px; padding:20px}
+
+    /* Sections */
+    section{padding-block:28px}
+    h2{font-size:1.6rem; margin:0 0 14px}
+    .grid{display:grid; gap:16px}
+    .projects{grid-template-columns:repeat(auto-fit, minmax(260px, 1fr))}
+    .card{background:var(--card); border:1px solid color-mix(in oklab, var(--text) 12%, transparent); border-radius:16px; padding:16px}
+    .card h3{margin:0 0 6px}
+    .meta{color:var(--muted); font-size:.95rem}
+
+    /* Footer */
+    footer{padding:32px 24px; color:var(--muted); text-align:center}
+
+    /* Responsive */
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr}
+    }
+    @media (max-width:720px){
+      .menu-btn{display:inline-flex; border:1px solid color-mix(in oklab, var(--text) 10%, transparent); background:var(--card); color:var(--text); padding:10px 12px; border-radius:12px}
+      nav ul{display:none}
+      nav ul.open{display:flex; flex-direction:column; position:absolute; right:24px; top:64px; background:var(--card); border:1px solid color-mix(in oklab, var(--text) 12%, transparent); padding:8px; border-radius:14px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home"><b>Y</b>our <b>N</b>ame</a>
+      <button class="menu-btn" aria-label="Toggle menu" onclick="toggleMenu()">Menu</button>
+      <nav>
+        <ul id="menu">
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home" class="container">
+    <section class="hero">
+      <div>
+        <span class="badge">🚀 Aerospace • Software • Systems</span>
+        <h1 class="title">Hi, I’m <span style="color:var(--brand)">Your Name</span> — I build reliable systems and delightful experiences.</h1>
+        <p class="subtitle">A short 2–3 sentence intro about you. Mention what you study or do, your interests, and the kind of roles you’re seeking.</p>
+        <div class="cta">
+          <a class="btn primary" href="#projects">View Projects</a>
+          <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Résumé</a>
+          <a class="btn" href="mailto:you@example.com">Email me</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <h3 style="margin:0">Currently</h3>
+        <p class="meta">What you’re doing right now (e.g., internships, research, senior design). Add impact and tools.</p>
+        <ul class="meta" style="margin-top:8px; padding-left:18px">
+          <li>🔧 Project highlight #1</li>
+          <li>📊 Project highlight #2</li>
+          <li>🧪 Project highlight #3</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2>About</h2>
+      <div class="card">
+        <p>Write a concise paragraph about your background, interests, and what drives you. Keep it human and specific—include your favorite tools, domains, and a fun fact.</p>
+      </div>
+    </section>
+
+    <section id="experience">
+      <h2>Experience</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Role • Company</h3>
+          <p class="meta">Jun 2025 – Present · City, ST</p>
+          <p>1–2 lines on your impact. Start with a strong verb and quantify outcomes when possible.</p>
+          <ul>
+            <li>Designed/implemented X → improved Y by Z%.</li>
+            <li>Automated A with B → saved N hours/week.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Role • Company</h3>
+          <p class="meta">Aug 2024 – May 2025 · City, ST</p>
+          <p>Brief summary of your responsibilities and results.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="grid projects">
+        <article class="card">
+          <h3>Project Name</h3>
+          <p class="meta">Tech: C, MATLAB, Python</p>
+          <p>What problem did you solve? What’s the result or metric? Link to the repo or demo.</p>
+          <p>
+            <a class="btn" href="#" target="_blank" rel="noopener">Repo</a>
+            <a class="btn" href="#" target="_blank" rel="noopener">Live</a>
+          </p>
+        </article>
+        <article class="card">
+          <h3>Another Project</h3>
+          <p class="meta">Tech: Simulink, Control</p>
+          <p>One or two crisp lines that reveal scope, constraints, and outcome.</p>
+          <p>
+            <a class="btn" href="#" target="_blank" rel="noopener">Repo</a>
+          </p>
+        </article>
+        <article class="card">
+          <h3>Design/Research</h3>
+          <p class="meta">Tech: CFD, XFOIL</p>
+          <p>Summarize goals and what you learned. Optional: paper/poster link.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="card">
+        <ul style="display:flex; flex-wrap:wrap; gap:10px; padding-left:0; list-style:none">
+          <li class="badge">C / C++</li>
+          <li class="badge">MATLAB / Simulink</li>
+          <li class="badge">Python</li>
+          <li class="badge">Git / GitHub</li>
+          <li class="badge">Control Systems</li>
+          <li class="badge">Aerodynamics</li>
+          <li class="badge">Data Analysis</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="card">
+        <p>Open to opportunities and collaborations. The fastest way to reach me is by <a href="mailto:you@example.com">email</a>. You can also find me on <a href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a> and <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <small>© <span id="year"></span> Your Name · Built with vanilla HTML/CSS · Hosted on GitHub Pages</small>
+  </footer>
+
+  <script>
+    function toggleMenu(){
+      const menu=document.getElementById('menu');
+      menu.classList.toggle('open');
+    }
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
