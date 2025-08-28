@@ -4,14 +4,105 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Timothy Pham – Portfolio</title>
-  <meta name="description" content="Personal portfolio website for Timothy Pham: projects, experience, and contact." />
-  <style>/* (keeping styles from previous version unchanged for brevity) */</style>
+  <meta name="description" content="Portfolio for Timothy Pham: Aerospace undergrad at the University of Michigan. Projects, experience, and contact." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #0a0c10;
+      --bg-accent: radial-gradient(1200px 600px at 10% -10%, rgba(79,140,255,.12), transparent 60%), radial-gradient(800px 500px at 110% 10%, rgba(122,162,255,.10), transparent 60%);
+      --card: #12161b;
+      --muted: #9aa4b2;
+      --text: #ecf1f8;
+      --brand: #5c87ff;
+      --brand-2: #8aa4ff;
+      --ring: rgba(92,135,255,.35);
+      --border: color-mix(in oklab, var(--text) 10%, transparent);
+      --shadow: 0 10px 30px rgba(0,0,0,.25);
+    }
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg:#f6f8fc; --bg-accent: radial-gradient(1200px 600px at 10% -10%, rgba(92,135,255,.10), transparent 60%), radial-gradient(800px 500px at 110% 10%, rgba(138,164,255,.08), transparent 60%);
+        --card:#ffffff; --muted:#566070; --text:#0f1720; --brand:#305dff; --brand-2:#6e8aff; --ring:rgba(48,93,255,.25); --border: color-mix(in oklab, var(--text) 12%, transparent);
+      }
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0; font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"; color:var(--text); background:var(--bg); background-image:var(--bg-accent)}
+    a{color:inherit; text-decoration:none}
+    a:focus-visible, button:focus-visible{outline:3px solid var(--ring); outline-offset:3px; border-radius:12px}
+    img{max-width:100%; display:block}
+
+    .container{max-width:1100px; margin-inline:auto; padding:24px}
+
+    /* Header */
+    header{position:sticky; top:0; backdrop-filter:blur(10px); background:color-mix(in oklab, var(--bg) 82%, transparent); border-bottom:1px solid var(--border); z-index:20}
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:16px}
+    .brand{font-weight:900; letter-spacing:.2px}
+    nav ul{display:flex; list-style:none; gap:6px; padding:0; margin:0}
+    nav a{padding:10px 12px; border-radius:12px; color:var(--muted)}
+    nav a:hover, nav a:focus{color:var(--text); background:color-mix(in oklab, var(--text) 8%, transparent)}
+    .menu-btn{display:none}
+
+    /* Section helpers */
+    .section-head{display:flex; align-items:end; justify-content:space-between; gap:12px; margin-bottom:12px}
+    h2{font-size:clamp(1.35rem, 1.2rem + 1vw, 1.8rem); margin:0}
+    .kicker{color:var(--muted); font-size:.95rem}
+
+    /* Hero */
+    .hero{display:grid; grid-template-columns:1.2fr .8fr; gap:36px; align-items:center; padding-block:48px}
+    .badge{display:inline-flex; align-items:center; gap:8px; font-size:.9rem; color:var(--muted); background:color-mix(in oklab, var(--brand) 15%, transparent); border:1px solid color-mix(in oklab, var(--brand) 45%, var(--bg)); padding:6px 10px; border-radius:999px}
+    .title{font-size:clamp(32px, 5vw, 52px); line-height:1.08; margin:14px 0 10px; font-weight:900}
+    .subtitle{color:var(--muted); font-size:1.06rem}
+    .cta{display:flex; flex-wrap:wrap; gap:12px; margin-top:18px}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:14px; border:1px solid var(--border); background:var(--card); color:var(--text); box-shadow:var(--shadow)}
+    .btn.primary{background:linear-gradient(135deg, var(--brand), var(--brand-2)); border:0}
+    .btn:hover{box-shadow:0 0 0 6px var(--ring)}
+    .hero-card{background:linear-gradient(180deg, color-mix(in oklab, var(--card) 88%, transparent), color-mix(in oklab, var(--card) 96%, transparent)); border:1px solid var(--border); border-radius:18px; padding:20px}
+
+    /* Cards & grids */
+    section{padding-block:28px}
+    .grid{display:grid; gap:16px}
+    .projects{grid-template-columns:repeat(auto-fit, minmax(280px, 1fr))}
+    .card{background:linear-gradient(180deg, color-mix(in oklab, var(--card) 92%, transparent), var(--card)); border:1px solid var(--border); border-radius:16px; padding:16px; transition:transform .18s ease, box-shadow .18s ease}
+    .card:hover{transform:translateY(-3px); box-shadow:0 12px 30px rgba(0,0,0,.25)}
+    .card h3{margin:0 0 6px}
+    .meta{color:var(--muted); font-size:.95rem}
+
+    /* Experience timeline */
+    .timeline{position:relative; padding-left:22px}
+    .timeline:before{content:""; position:absolute; left:8px; top:0; bottom:0; width:2px; background:color-mix(in oklab, var(--text) 12%, transparent)}
+    .t-item{position:relative; padding-left:10px; margin-bottom:14px}
+    .t-item:before{content:""; position:absolute; left:-1px; top:.4rem; width:10px; height:10px; border-radius:50%; background:linear-gradient(135deg, var(--brand), var(--brand-2)); box-shadow:0 0 0 3px color-mix(in oklab, var(--brand) 20%, transparent)}
+
+    /* Skill pills */
+    .pills{display:flex; flex-wrap:wrap; gap:10px; padding-left:0; list-style:none}
+    .pill{display:inline-flex; align-items:center; padding:8px 12px; border-radius:999px; border:1px dashed color-mix(in oklab, var(--text) 18%, transparent); color:var(--text); background:color-mix(in oklab, var(--text) 4%, transparent)}
+
+    /* Footer */
+    footer{padding:32px 24px; color:var(--muted); text-align:center}
+
+    /* Responsive */
+    @media (max-width:900px){.hero{grid-template-columns:1fr}}
+    @media (max-width:720px){
+      .menu-btn{display:inline-flex; border:1px solid var(--border); background:var(--card); color:var(--text); padding:10px 12px; border-radius:12px}
+      nav ul{display:none}
+      nav ul.open{display:flex; flex-direction:column; position:absolute; right:24px; top:64px; background:var(--card); border:1px solid var(--border); padding:8px; border-radius:14px; box-shadow:var(--shadow)}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *{transition:none!important; animation:none!important}
+    }
+    /* Ensure anchors aren't hidden behind sticky header */
+    section[id]{scroll-margin-top: 96px}
+  </style>
 </head>
 <body>
   <header>
     <div class="container nav">
-      <a class="brand" href="#home"><b>T</b>imothy <b>P</b>ham</a>
-      <button class="menu-btn" aria-label="Toggle menu" onclick="toggleMenu()">Menu</button>
+      <a class="brand" href="#home">Timothy Pham</a>
       <nav>
         <ul id="menu">
           <li><a href="#about">About</a></li>
@@ -27,9 +118,9 @@
   <main id="home" class="container">
     <section class="hero">
       <div>
-        <span class="badge">🚀 Aerospace • Engineering • Systems</span>
-        <h1 class="title">Hi, I’m <span style="color:var(--brand)">Timothy Pham</span> — Aerospace Engineering undergrad at UMich.</h1>
-        <p class="subtitle">Aerospace undergrad at the University of Michigan College of Engineering (Class of 2026), with a minor in Space and Climate Engineering. I’m passionate about propulsion, systems design, and energy efficiency research.</p>
+        <span class="badge">🚀 Aerospace • Systems • Controls • Mechatronics</span>
+        <h1 class="title">Hi, I’m <span style="color:var(--brand)">Timothy Pham</span></h1>
+        <p class="subtitle">Aerospace undergrad at the University of Michigan (B.S. ’26, Space & Climate Eng minor). Hands-on with energy systems, vehicle efficiency, and aero/control projects. Seeking new‑grad roles in systems, controls, and aero/mechatronics.</p>
         <div class="cta">
           <a class="btn primary" href="#projects">View Projects</a>
           <a class="btn" href="Timothy%20Pham%27s%20Engineering%20Resume.pdf" target="_blank" rel="noopener">Résumé</a>
@@ -38,11 +129,11 @@
       </div>
       <div class="hero-card">
         <h3 style="margin:0">Currently</h3>
-        <p class="meta">Power Distribution Engineering & Design Intern at DTE Energy (Summer 2025).</p>
+        <p class="meta">Power Distribution Engineering & Design Intern at DTE Energy (June 2025–Present), designing grid upgrades and building deployment‑ready work packages.</p>
         <ul class="meta" style="margin-top:8px; padding-left:18px">
-          <li>⚡ Designing electrical grid upgrades with ArcMap & Maximo</li>
-          <li>🔧 Supporting construction plan development</li>
-          <li>📊 Performing pole loading and voltage drop calculations</li>
+          <li>Developed new NETBANKs; produced circuit diagrams & materials lists.</li>
+          <li>Pole loading, cable tension, transformer sizing, voltage‑drop calcs.</li>
+          <li>Tools: ESRI/ArcMap, Maximo, ESI; Python & MATLAB for analysis.</li>
         </ul>
       </div>
     </section>
@@ -50,7 +141,7 @@
     <section id="about">
       <h2>About</h2>
       <div class="card">
-        <p>I’m Timothy Pham, an Aerospace Engineering undergrad at the University of Michigan with a minor in Space and Climate Engineering. My background spans aerospace design, vehicle energy efficiency, and power distribution systems. I enjoy applying both software and hardware skills to solve engineering challenges—from CFD simulations to electrical grid design. Fun fact: I’ve worked on projects ranging from racing aerodynamics to patent development in automotive innovation.</p>
+        <p>Hi my name is Timothy Pham,I am currently a senior at the University of Michigan pursuing a degree in Aerospace Engineering, with a minor in Space Engineering. My past experience includes control system analysis,elctrical system analysis, aerodynamic research and analysis, and cad and programming design. </p>
       </div>
     </section>
 
@@ -58,33 +149,33 @@
       <h2>Experience</h2>
       <div class="grid">
         <article class="card">
-          <h3>Power Distribution Engineering and Design Intern • DTE Energy</h3>
+          <h3>Power Distribution Engineering & Design Intern • DTE Energy</h3>
           <p class="meta">Jun 2025 – Present · Detroit, MI</p>
           <ul>
-            <li>Designed and planned electrical grid upgrades using ESRI/ArcMap.</li>
-            <li>Developed new NETBANKs for deployment.</li>
-            <li>Collected field data and supported construction planning with Maximo.</li>
-            <li>Performed pole loading, cable tension, and voltage drop calculations.</li>
+            <li>Designed and planned electrical grid upgrades; produced work packages, material lists, and circuit diagrams using ESRI/ArcMap.</li>
+            <li>Developed and implemented new NETBANKs for systemwide deployment.</li>
+            <li>Collected field data and supported construction plans via ESI and Maximo.</li>
+            <li>Performed pole loading, cable tension, transformer sizing, and voltage drop calculations.</li>
           </ul>
         </article>
         <article class="card">
-          <h3>Engineering Management Co-op • DTE Energy</h3>
+          <h3>Engineering Management Co‑op • DTE Energy</h3>
           <p class="meta">Aug 2024 – Jun 2025 · Detroit, MI</p>
           <ul>
-            <li>Restructured Dearborn’s electrical grid to improve reliability.</li>
-            <li>Led troubleshooting and root cause analysis of sub-transmission systems.</li>
-            <li>Developed automated Excel tracking tools for milestones and budgets.</li>
-            <li>Revised electrical schematics ensuring compliance with specifications.</li>
+            <li>Designed and maintained electrical systems for critical infrastructure; contributed to Dearborn grid restructure for efficiency and reliability.</li>
+            <li>Led troubleshooting & root‑cause analysis to resolve performance issues and improve work‑order availability.</li>
+            <li>Analyzed sub‑transmission/transmission performance and built remediation plans to improve reliability.</li>
+            <li>Interpreted and revised electrical schematics to meet spec and compliance.</li>
           </ul>
         </article>
         <article class="card">
           <h3>Vehicle Energy Efficiency Intern • Hyundai Motor Group</h3>
           <p class="meta">May 2024 – Aug 2024 · Ann Arbor, MI</p>
           <ul>
-            <li>Used ETAS INCA to validate and calibrate fuel economy parameters (30% MPG gain).</li>
-            <li>Optimized DFCO strategies and shift patterns for fuel efficiency.</li>
-            <li>Contributed to patent work on hybrid charging and smart key fob systems.</li>
-            <li>Automated parsing and calibration adjustments using Python scripts.</li>
+            <li>Used ETAS INCA to validate & calibrate fuel‑economy parameters, contributing to a 30% MPG increase on latest ICE models.</li>
+            <li>Optimized DFCO strategies and transmission shift patterns to enhance efficiency and performance.</li>
+            <li>Contributed to patent work on Hybrid Cell Systems and an electronic key fob with real‑time vehicle data display.</li>
+            <li>Automated variable parsing and calibration adjustments in .dat/.mdf via Python; collaborated with Korea‑based teams on testing protocols.</li>
           </ul>
         </article>
       </div>
@@ -94,14 +185,31 @@
       <h2>Projects & Activities</h2>
       <div class="grid projects">
         <article class="card">
-          <h3>M-Racing</h3>
-          <p class="meta">Aerodynamics & Powertrain Development</p>
-          <p>Designed aero elements with CAD and validated performance using CFD (XFOIL, Star-CCM+). Conducted wind tunnel testing and integrated aero systems with cooling, suspension, and chassis.</p>
+          <h3>M‑Racing — Aerodynamics & Powertrain</h3>
+          <p class="meta">Tech: XFOIL, Star‑CCM+, CFD, CAD</p>
+          <ul>
+            <li>Designed side aero secondary/tertiary elements; validated with CFD and wind‑tunnel tests.</li>
+            <li>Integrated aero with powertrain, cooling, suspension, and chassis systems.</li>
+          </ul>
         </article>
         <article class="card">
-          <h3>American Institute of Aeronautics and Astronautics</h3>
-          <p class="meta">Social Committee Member</p>
-          <p>Organized workshops and networking sessions while engaging prospective students about aerospace careers.</p>
+          <h3>Autonomous Drone Project</h3>
+          <p class="meta">Tech: SpeedyBee F405 V4, Python, OpenCV, Facial Recognition</p>
+          <ul>
+            <li>Built a fully autonomous drone integrated with a SpeedyBee F405 V4 flight controller.</li>
+            <li>Implemented PC‑connected control without manual transmitter, enabling ground‑station autonomy.</li>
+            <li>Developed Python backend for vision processing and autonomous navigation.</li>
+            <li>Used onboard facial recognition to enable object/person tracking functionality.</li>
+            <li>Integrated hardware with 3D‑printed components and custom camera setup.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>AIAA — Social Committee Member</h3>
+          <p class="meta">Focus: Outreach, Events</p>
+          <ul>
+            <li>Engaged and educated prospective students via workshops and networking.</li>
+            <li>Linked academic learning with industry insight through organized events.</li>
+          </ul>
         </article>
       </div>
     </section>
@@ -114,14 +222,12 @@
           <li class="badge">Python</li>
           <li class="badge">MATLAB / Simulink</li>
           <li class="badge">VBA</li>
-          <li class="badge">AutoCAD</li>
-          <li class="badge">XFOIL / Star-CCM+</li>
-          <li class="badge">SolidWorks / Inventor</li>
-          <li class="badge">ArcMap</li>
-          <li class="badge">CNC Mill</li>
-          <li class="badge">Welding</li>
-          <li class="badge">Composite Fabrication</li>
-          <li class="badge">Control System Design</li>
+          <li class="badge">CAD (SolidWorks, Inventor)</li>
+          <li class="badge">CFD (XFOIL, Star‑CCM+)</li>
+          <li class="badge">AutoCAD / ArcMap</li>
+          <li class="badge">Control Systems</li>
+          <li class="badge">Manufacturing (CNC, Welding, Composites)</li>
+          <li class="badge">Soldering / Power Tools</li>
         </ul>
       </div>
     </section>
@@ -129,20 +235,38 @@
     <section id="contact">
       <h2>Contact</h2>
       <div class="card">
-        <p>You can reach me at <a href="mailto:timpham@umich.edu">timpham@umich.edu</a> or connect on <a href="https://www.linkedin.com/in/phamtimothyt/" target="_blank" rel="noopener">LinkedIn</a>. My GitHub projects are available at <a href="https://github.com/Tp0049" target="_blank" rel="noopener">github.com/Tp0049</a>.</p>
+        <p>Best way to reach me is by <a href="mailto:timpham@umich.edu">email</a> or phone.
+        </p>
+        <p class="meta" style="margin-top:6px">
+          📧 <a href="mailto:timpham@umich.edu">timpham@umich.edu</a><br/>
+          📱 <a href="tel:+15862150049">(586) 215‑0049</a>
+        </p>
+        <p class="meta" style="margin-top:10px">
+          Also on <a href="https://www.linkedin.com/in/phamtimothyt/" target="_blank" rel="noopener">LinkedIn</a> and <a href="https://github.com/Tp0049" target="_blank" rel="noopener">GitHub</a>.
+        </p>
       </div>
     </section>
   </main>
 
   <footer>
-    <small>© <span id="year"></span> Timothy Pham · Hosted on GitHub Pages</small>
+    <small>© <span id="year"></span> Timothy Pham · Built with HTML/CSS · Hosted on GitHub Pages</small>
   </footer>
 
   <script>
     function toggleMenu(){
       const menu=document.getElementById('menu');
-      menu.classList.toggle('open');
+      const btn=document.querySelector('.menu-btn');
+      const open=menu.classList.toggle('open');
+      if(btn) btn.setAttribute('aria-expanded', open ? 'true' : 'false');
     }
+    // Close mobile menu after clicking a nav link (and ensure in-page links work cleanly)
+    document.querySelectorAll('nav a[href^="#"]').forEach(a=>{
+      a.addEventListener('click',()=>{
+        const menu=document.getElementById('menu');
+        if(menu.classList.contains('open')) menu.classList.remove('open');
+      });
+    });
+    // Current year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
