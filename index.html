@@ -4,89 +4,175 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Timothy Pham – Portfolio</title>
-  <meta name="description" content="Portfolio for Timothy Pham: Aerospace undergrad at the University of Michigan. Projects, experience, and contact." />
+  <meta name="description" content="Portfolio for Timothy Pham: Aerospace Engineering student at the University of Michigan. Projects, experience, and contact." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0a0c10;
-      --bg-accent: radial-gradient(1200px 600px at 10% -10%, rgba(79,140,255,.12), transparent 60%), radial-gradient(800px 500px at 110% 10%, rgba(122,162,255,.10), transparent 60%);
+      --bg: #090c12;
       --card: #12161b;
       --muted: #9aa4b2;
-      --text: #ecf1f8;
+      --text: #eaf0f8;
       --brand: #5c87ff;
       --brand-2: #8aa4ff;
-      --ring: rgba(92,135,255,.35);
-      --border: color-mix(in oklab, var(--text) 10%, transparent);
-      --shadow: 0 10px 30px rgba(0,0,0,.25);
+      --border: rgba(255,255,255,0.08);
+      --ring: rgba(92,135,255,0.25);
     }
-    body {margin:0; font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;color:var(--text);background:var(--bg);background-image:var(--bg-accent)}
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
-    .container{max-width:1100px;margin:auto;padding:24px}
-    h2{font-size:clamp(1.35rem,1.2rem+1vw,1.8rem);margin:0 0 10px}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px;margin-bottom:18px}
-    .badge{display:inline-block;background:color-mix(in oklab,var(--brand) 25%,transparent);padding:4px 10px;border-radius:999px;color:var(--brand-2);font-size:.9rem}
-    .grid{display:grid;gap:16px}
+
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      background-image: radial-gradient(1000px 800px at 10% -10%, rgba(79,140,255,.12), transparent 70%), 
+                        radial-gradient(1200px 900px at 120% 10%, rgba(122,162,255,.10), transparent 70%);
+    }
+
+    h1, h2, h3 {
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      margin-top: 0;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 0.8rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.4rem;
+    }
+
+    p, li {font-size: 1rem;}
+    a {color: var(--brand); text-decoration: none;}
+    a:hover {color: var(--brand-2);}
+
+    /* Container */
+    .container {
+      max-width: 1080px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 80px 20px 60px;
+      background: linear-gradient(180deg, rgba(92,135,255,0.08), transparent 60%);
+      border-bottom: 1px solid var(--border);
+    }
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 3.2rem);
+      margin-bottom: 0.5rem;
+      color: var(--brand-2);
+    }
+    .hero p {
+      color: var(--muted);
+      max-width: 700px;
+      margin: 0.3rem auto 1.2rem;
+    }
+    .contact-links a {
+      display: inline-block;
+      margin: 0 10px;
+      color: var(--brand);
+      font-weight: 600;
+    }
+    .contact-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* Section */
+    section {
+      margin-top: 50px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 22px;
+      margin-bottom: 16px;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 22px rgba(0,0,0,0.3);
+    }
+
+    /* Resume Button */
     .resume-btn {
-      display:inline-block;
-      background:linear-gradient(135deg, var(--brand), var(--brand-2));
-      color:white;
-      padding:12px 22px;
-      border-radius:12px;
-      font-weight:600;
-      text-align:center;
-      box-shadow:0 5px 15px rgba(0,0,0,0.3);
-      margin-top:24px;
-      transition:transform .15s ease, box-shadow .2s ease;
+      display: inline-block;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      color: white;
+      padding: 14px 28px;
+      border-radius: 14px;
+      font-weight: 600;
+      font-size: 1rem;
+      margin-top: 30px;
+      box-shadow: 0 0 18px rgba(92,135,255,0.25);
+      transition: all 0.25s ease;
     }
+
     .resume-btn:hover {
-      transform:translateY(-2px);
-      box-shadow:0 8px 20px rgba(0,0,0,0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 0 30px rgba(92,135,255,0.35);
     }
-    footer{text-align:center;color:var(--muted);padding:24px}
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 0.95rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      margin-top: 60px;
+    }
+
+    ul {margin-top: 8px; padding-left: 18px;}
   </style>
 </head>
 <body>
-  <main class="container">
-    <section>
-      <h1 style="font-size:2.2rem;">Timothy Pham</h1>
-      <p>Aerospace Engineering B.S. ’26 – University of Michigan | Space & Climate Engineering Minor</p>
-      <p><a href="mailto:timpham@umich.edu">timpham@umich.edu</a> | <a href="https://www.linkedin.com/in/phamtimothyt/">LinkedIn</a> | <a href="https://tp0049-web.github.io/Portfolio/">Portfolio</a></p>
-    </section>
+  <header class="hero">
+    <h1>Timothy Pham</h1>
+    <p>Aerospace Engineering B.S. ’26 – University of Michigan<br>Minor in Space & Climate Engineering</p>
+    <div class="contact-links">
+      <a href="mailto:timpham@umich.edu">Email</a> ·
+      <a href="https://www.linkedin.com/in/phamtimothyt/">LinkedIn</a> ·
+      <a href="https://tp0049-web.github.io/Portfolio/">Portfolio</a>
+    </div>
+  </header>
 
+  <main class="container">
     <section id="experience">
       <h2>Experience</h2>
-
       <div class="card">
         <h3>DTE Energy – Power Distribution Engineering & Design Intern</h3>
-        <p><em>June 2025 – Present | Detroit, MI</em></p>
+        <p><em>June 2025 – Present · Detroit, MI</em></p>
         <ul>
-          <li>Designed and planned large-scale electrical grid conversion projects using ESRI ArcMap and AutoCAD, generating detailed work packages and circuit diagrams impacting 100K+ customers.</li>
-          <li>Developed and implemented new NETBANKs for systemwide deployment.</li>
-          <li>Performed pole loading, cable tension, transformer sizing, and voltage drop calculations.</li>
+          <li>Designed large-scale electrical grid conversion projects using ESRI ArcMap & AutoCAD, impacting 100K+ customers.</li>
+          <li>Created detailed work packages, material lists, and system conversion schematics.</li>
+          <li>Developed new NETBANKs and optimized transformer sizing, pole loading, and cable tension calculations.</li>
         </ul>
       </div>
 
       <div class="card">
         <h3>DTE Energy – Engineering Management Co-op</h3>
-        <p><em>Aug 2024 – Jun 2025 | Detroit, MI</em></p>
+        <p><em>Aug 2024 – Jun 2025 · Detroit, MI</em></p>
         <ul>
-          <li>Designed, implemented, and maintained electrical systems for critical infrastructure, including the restructuring of Dearborn’s power grid.</li>
-          <li>Led troubleshooting and root-cause failure analyses on sub-transmission networks.</li>
-          <li>Redlined and verified electrical schematics to ensure NESC/IEEE compliance.</li>
+          <li>Improved sub-transmission system reliability via field data analysis and root-cause assessments.</li>
+          <li>Led troubleshooting efforts for system failures and optimized maintenance workflows.</li>
+          <li>Updated electrical schematics for project compliance and documentation accuracy.</li>
         </ul>
       </div>
 
       <div class="card">
         <h3>Hyundai Motor Group – Vehicle Energy Efficiency Intern</h3>
-        <p><em>May 2024 – Aug 2024 | Ann Arbor, MI</em></p>
+        <p><em>May 2024 – Aug 2024 · Ann Arbor, MI</em></p>
         <ul>
-          <li>Validated and calibrated fuel economy parameters using ETAS INCA, improving vehicle MPG by 30%.</li>
-          <li>Optimized DFCO strategies and transmission shift patterns for fuel efficiency and emissions control.</li>
-          <li>Contributed to an electronic key fob patent enabling real-time vehicle data display.</li>
-          <li>Automated calibration processes via Python for .dat and .mdf files.</li>
+          <li>Validated and calibrated fuel economy parameters in ETAS INCA, increasing model MPG by 30%.</li>
+          <li>Optimized DFCO and transmission shift strategies for efficiency and emissions.</li>
+          <li>Co-developed an electronic key fob patent concept displaying real-time vehicle data.</li>
+          <li>Automated calibration data parsing via Python scripts (.dat/.mdf integration).</li>
         </ul>
       </div>
     </section>
@@ -94,52 +180,49 @@
     <section id="research">
       <h2>Research</h2>
       <div class="card">
-        <h3>Michigan Target Fabrication and Research Facility (MiTRF)</h3>
-        <p><em>Undergraduate Research Assistant | Sep 2025 – Present | Ann Arbor, MI</em></p>
+        <h3>Michigan Target Fabrication & Research Facility (MiTRF)</h3>
+        <p><em>Undergraduate Research Assistant · Sep 2025 – Present · Ann Arbor, MI</em></p>
         <ul>
-          <li>Fabricate precision targets for high-energy-density and plasma physics experiments.</li>
-          <li>Measured and characterized components with digital microscopy; designed microfabrication jigs.</li>
-          <li>Prototyped fixtures via SLA 3D printing and assisted with coatings, etching, and lithography in LNF.</li>
+          <li>Fabricate precision targets for high-energy-density and plasma-physics experiments.</li>
+          <li>Design micro-scale fixtures via CAD & SLA 3D printing; conduct microscopy-based measurements.</li>
+          <li>Assist with coatings, etching, and lithography work in the Lurie Nanofabrication Facility.</li>
         </ul>
       </div>
     </section>
 
     <section id="projects">
       <h2>Projects</h2>
-
       <div class="card">
         <h3>Autonomous Drone Project</h3>
-        <p><em>Personal Project | 2025</em></p>
+        <p><em>Personal Project · 2025</em></p>
         <ul>
-          <li>Built a fully autonomous drone integrating a SpeedyBee F405 V4 flight controller, sensors, and camera modules.</li>
-          <li>Developed a Python-based backend for onboard facial recognition and autonomous navigation via OpenCV.</li>
-          <li>Implemented PC connectivity for ground-station control without a manual transmitter.</li>
-          <li>Integrated 3D-printed components for camera housing and vibration isolation mounts.</li>
+          <li>Built a fully autonomous drone using a SpeedyBee F405 V4 flight controller and custom-integrated sensors.</li>
+          <li>Implemented onboard facial recognition and navigation using OpenCV and Python backend.</li>
+          <li>Developed PC-connected control logic for ground-station autonomy (no transmitter required).</li>
+          <li>3D-printed custom camera mounts and vibration-isolated hardware housings.</li>
         </ul>
       </div>
 
       <div class="card">
-        <h3>M-Racing – Formula SAE Team (Aerodynamics & Powertrain)</h3>
-        <p><em>Sep 2023 – Present | Ann Arbor, MI</em></p>
+        <h3>M-Racing – Formula SAE (Aerodynamics & Powertrain)</h3>
+        <p><em>Sep 2023 – Present · Ann Arbor, MI</em></p>
         <ul>
-          <li>Designed side-aero elements using XFOIL and Star-CCM+; validated with CFD and wind-tunnel testing.</li>
-          <li>Collaborated with powertrain, cooling, and chassis subsystems to integrate aero performance.</li>
+          <li>Designed aero elements using XFOIL & Star-CCM+; validated via CFD and wind-tunnel tests.</li>
+          <li>Collaborated with powertrain and chassis subsystems for aerodynamic integration.</li>
         </ul>
       </div>
     </section>
 
     <section id="skills">
       <h2>Skills</h2>
-      <p><strong>Programming & Analysis:</strong> Python, C++, MATLAB/Simulink, VBA, C, Data Analysis</p>
-      <p><strong>CAD & Simulation:</strong> AutoCAD, SolidWorks, Inventor, Star-CCM+, XFOIL, ANSYS STK, CFD, MBSE</p>
-      <p><strong>Manufacturing & Systems:</strong> CNC Machining, Welding, Soldering, Composites, 3D Printing, Power Systems, Control Design</p>
+      <p><strong>Programming & Analysis:</strong> Python, C++, MATLAB/Simulink, VBA, C</p>
+      <p><strong>CAD & Simulation:</strong> SolidWorks, AutoCAD, Star-CCM+, XFOIL, Inventor, ANSYS STK</p>
+      <p><strong>Manufacturing & Systems:</strong> CNC Machining, Welding, Soldering, 3D Printing, Composites, Control Design</p>
     </section>
 
-    <!-- Resume Button -->
     <div style="text-align:center;">
       <a href="Timothy Pham Engineering Resume.pdf" target="_blank" class="resume-btn">📄 View My Résumé</a>
     </div>
-
   </main>
 
   <footer>
