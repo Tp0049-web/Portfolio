@@ -1,178 +1,152 @@
+<!-- Timothy Pham Portfolio – Pro Edition with Nav & Animations -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Timothy Pham – Portfolio</title>
-  <meta name="description" content="Portfolio for Timothy Pham: Aerospace Engineering student at the University of Michigan. Projects, experience, and contact." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <title>Timothy Pham – Aerospace Portfolio</title>
+  <meta name="description" content="Portfolio of Timothy Pham – Aerospace Engineering student at the University of Michigan, showcasing research, projects, and design work." />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #090c12;
-      --card: #12161b;
-      --muted: #9aa4b2;
       --text: #eaf0f8;
+      --muted: #98a0b0;
       --brand: #5c87ff;
-      --brand-2: #8aa4ff;
+      --brand2: #8aa4ff;
+      --card: #12161b;
       --border: rgba(255,255,255,0.08);
-      --ring: rgba(92,135,255,0.25);
     }
-
+    html {scroll-behavior:smooth;}
     body {
-      margin: 0;
-      font-family: 'Inter', system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      background-image: radial-gradient(1000px 800px at 10% -10%, rgba(79,140,255,.12), transparent 70%), 
-                        radial-gradient(1200px 900px at 120% 10%, rgba(122,162,255,.10), transparent 70%);
+      margin:0;
+      font-family:'Inter',system-ui,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
     }
 
-    h1, h2, h3 {
-      font-weight: 800;
-      letter-spacing: 0.3px;
-      margin-top: 0;
+    /* === NAVBAR === */
+    header {
+      position:sticky; top:0; z-index:100;
+      background:rgba(9,12,18,0.8);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--border);
     }
-
-    h2 {
-      font-size: 1.8rem;
-      margin-bottom: 0.8rem;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 0.4rem;
+    nav {
+      max-width:1080px; margin:auto;
+      display:flex; justify-content:space-between; align-items:center;
+      padding:12px 20px;
     }
-
-    p, li {font-size: 1rem;}
-    a {color: var(--brand); text-decoration: none;}
-    a:hover {color: var(--brand-2);}
-
-    /* Container */
-    .container {
-      max-width: 1080px;
-      margin: auto;
-      padding: 40px 20px;
+    nav a {
+      color:var(--muted); text-decoration:none; margin:0 12px;
+      font-weight:500; transition:color .2s;
     }
+    nav a:hover, nav a.active {color:var(--brand2);}
+    .name {font-weight:800; color:var(--text); font-size:1.1rem;}
 
-    /* Hero */
+    /* === HERO === */
     .hero {
-      text-align: center;
-      padding: 80px 20px 60px;
-      background: linear-gradient(180deg, rgba(92,135,255,0.08), transparent 60%);
-      border-bottom: 1px solid var(--border);
+      text-align:center;
+      padding:100px 20px 70px;
+      background:linear-gradient(180deg,rgba(92,135,255,0.08),transparent 60%);
     }
     .hero h1 {
-      font-size: clamp(2.4rem, 5vw, 3.2rem);
-      margin-bottom: 0.5rem;
-      color: var(--brand-2);
+      font-size:clamp(2.4rem,5vw,3.2rem);
+      color:var(--brand2);
+      margin-bottom:0.4rem;
     }
-    .hero p {
-      color: var(--muted);
-      max-width: 700px;
-      margin: 0.3rem auto 1.2rem;
+    .hero p {color:var(--muted); max-width:700px; margin:auto;}
+    .hero-links a {
+      display:inline-block; margin:8px 10px; color:var(--brand);
+      font-weight:600; text-decoration:none;
     }
-    .contact-links a {
-      display: inline-block;
-      margin: 0 10px;
-      color: var(--brand);
-      font-weight: 600;
-    }
-    .contact-links a:hover {
-      text-decoration: underline;
-    }
-
-    /* Section */
-    section {
-      margin-top: 50px;
-    }
-
-    .card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 18px 22px;
-      margin-bottom: 16px;
-      transition: transform .2s ease, box-shadow .2s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 22px rgba(0,0,0,0.3);
-    }
-
-    /* Resume Button */
+    .hero-links a:hover {color:var(--brand2);}
     .resume-btn {
-      display: inline-block;
-      background: linear-gradient(135deg, var(--brand), var(--brand-2));
-      color: white;
-      padding: 14px 28px;
-      border-radius: 14px;
-      font-weight: 600;
-      font-size: 1rem;
-      margin-top: 30px;
-      box-shadow: 0 0 18px rgba(92,135,255,0.25);
-      transition: all 0.25s ease;
+      display:inline-block;
+      background:linear-gradient(135deg,var(--brand),var(--brand2));
+      color:white; padding:14px 28px; border-radius:14px;
+      font-weight:600; margin-top:25px;
+      box-shadow:0 0 20px rgba(92,135,255,0.25);
+      transition:transform .25s ease, box-shadow .25s ease;
     }
+    .resume-btn:hover {transform:translateY(-3px); box-shadow:0 0 30px rgba(92,135,255,0.4);}
 
-    .resume-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 0 30px rgba(92,135,255,0.35);
+    /* === SECTIONS === */
+    main {max-width:1080px; margin:auto; padding:20px;}
+    section {margin-top:70px;}
+    h2 {
+      font-size:1.8rem;
+      border-bottom:1px solid var(--border);
+      padding-bottom:0.4rem;
     }
+    .card {
+      background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:18px 22px;
+      margin-bottom:16px;
+      opacity:0; transform:translateY(20px);
+      transition:opacity .6s ease, transform .6s ease;
+    }
+    .card.visible {opacity:1; transform:translateY(0);}
+    .card:hover {transform:translateY(-3px); box-shadow:0 8px 22px rgba(0,0,0,0.3);}
+    ul {padding-left:18px;}
 
     footer {
-      text-align: center;
-      padding: 40px 20px;
-      font-size: 0.95rem;
-      color: var(--muted);
-      border-top: 1px solid var(--border);
-      margin-top: 60px;
+      text-align:center;
+      padding:40px 20px;
+      font-size:0.95rem;
+      color:var(--muted);
+      border-top:1px solid var(--border);
+      margin-top:60px;
     }
-
-    ul {margin-top: 8px; padding-left: 18px;}
   </style>
 </head>
 <body>
-  <header class="hero">
+  <header>
+    <nav>
+      <span class="name">Timothy Pham</span>
+      <div>
+        <a href="#experience">Experience</a>
+        <a href="#research">Research</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
     <h1>Timothy Pham</h1>
-    <p>Aerospace Engineering B.S. ’26 – University of Michigan<br>Minor in Space & Climate Engineering</p>
-    <div class="contact-links">
+    <p>Aerospace Engineering B.S. ’26 – University of Michigan<br>Minor: Space & Climate Engineering</p>
+    <div class="hero-links">
       <a href="mailto:timpham@umich.edu">Email</a> ·
       <a href="https://www.linkedin.com/in/phamtimothyt/">LinkedIn</a> ·
       <a href="https://tp0049-web.github.io/Portfolio/">Portfolio</a>
     </div>
-  </header>
+    <a href="Timothy Pham Engineering Resume.pdf" target="_blank" class="resume-btn">📄 View My Résumé</a>
+  </section>
 
-  <main class="container">
+  <main>
     <section id="experience">
       <h2>Experience</h2>
       <div class="card">
         <h3>DTE Energy – Power Distribution Engineering & Design Intern</h3>
         <p><em>June 2025 – Present · Detroit, MI</em></p>
         <ul>
-          <li>Designed large-scale electrical grid conversion projects using ESRI ArcMap & AutoCAD, impacting 100K+ customers.</li>
-          <li>Created detailed work packages, material lists, and system conversion schematics.</li>
-          <li>Developed new NETBANKs and optimized transformer sizing, pole loading, and cable tension calculations.</li>
+          <li>Designed large-scale grid conversion projects using ESRI ArcMap & AutoCAD, impacting 100K+ customers.</li>
+          <li>Developed NETBANKs and system conversion work packages with detailed schematics.</li>
+          <li>Performed pole loading, voltage drop, and transformer sizing calculations.</li>
         </ul>
       </div>
-
-      <div class="card">
-        <h3>DTE Energy – Engineering Management Co-op</h3>
-        <p><em>Aug 2024 – Jun 2025 · Detroit, MI</em></p>
-        <ul>
-          <li>Improved sub-transmission system reliability via field data analysis and root-cause assessments.</li>
-          <li>Led troubleshooting efforts for system failures and optimized maintenance workflows.</li>
-          <li>Updated electrical schematics for project compliance and documentation accuracy.</li>
-        </ul>
-      </div>
-
       <div class="card">
         <h3>Hyundai Motor Group – Vehicle Energy Efficiency Intern</h3>
         <p><em>May 2024 – Aug 2024 · Ann Arbor, MI</em></p>
         <ul>
-          <li>Validated and calibrated fuel economy parameters in ETAS INCA, increasing model MPG by 30%.</li>
-          <li>Optimized DFCO and transmission shift strategies for efficiency and emissions.</li>
-          <li>Co-developed an electronic key fob patent concept displaying real-time vehicle data.</li>
-          <li>Automated calibration data parsing via Python scripts (.dat/.mdf integration).</li>
+          <li>Validated and calibrated fuel economy parameters via ETAS INCA; improved MPG by 30%.</li>
+          <li>Co-developed a patent for an electronic key fob showing live vehicle diagnostics.</li>
+          <li>Automated calibration workflows using Python for .dat and .mdf datasets.</li>
         </ul>
       </div>
     </section>
@@ -183,9 +157,8 @@
         <h3>Michigan Target Fabrication & Research Facility (MiTRF)</h3>
         <p><em>Undergraduate Research Assistant · Sep 2025 – Present · Ann Arbor, MI</em></p>
         <ul>
-          <li>Fabricate precision targets for high-energy-density and plasma-physics experiments.</li>
-          <li>Design micro-scale fixtures via CAD & SLA 3D printing; conduct microscopy-based measurements.</li>
-          <li>Assist with coatings, etching, and lithography work in the Lurie Nanofabrication Facility.</li>
+          <li>Fabricate precision targets for high-energy-density and plasma physics experiments.</li>
+          <li>Utilized microscopy, CAD, and SLA 3D printing for micro-scale component fabrication.</li>
         </ul>
       </div>
     </section>
@@ -196,19 +169,15 @@
         <h3>Autonomous Drone Project</h3>
         <p><em>Personal Project · 2025</em></p>
         <ul>
-          <li>Built a fully autonomous drone using a SpeedyBee F405 V4 flight controller and custom-integrated sensors.</li>
-          <li>Implemented onboard facial recognition and navigation using OpenCV and Python backend.</li>
-          <li>Developed PC-connected control logic for ground-station autonomy (no transmitter required).</li>
-          <li>3D-printed custom camera mounts and vibration-isolated hardware housings.</li>
+          <li>Built a fully autonomous drone with a SpeedyBee F405 V4 controller and facial recognition.</li>
+          <li>Implemented onboard navigation via OpenCV and Python for PC-linked ground control.</li>
         </ul>
       </div>
-
       <div class="card">
         <h3>M-Racing – Formula SAE (Aerodynamics & Powertrain)</h3>
         <p><em>Sep 2023 – Present · Ann Arbor, MI</em></p>
         <ul>
-          <li>Designed aero elements using XFOIL & Star-CCM+; validated via CFD and wind-tunnel tests.</li>
-          <li>Collaborated with powertrain and chassis subsystems for aerodynamic integration.</li>
+          <li>Designed aero components using XFOIL & Star-CCM+; validated via CFD and wind-tunnel testing.</li>
         </ul>
       </div>
     </section>
@@ -216,13 +185,19 @@
     <section id="skills">
       <h2>Skills</h2>
       <p><strong>Programming & Analysis:</strong> Python, C++, MATLAB/Simulink, VBA, C</p>
-      <p><strong>CAD & Simulation:</strong> SolidWorks, AutoCAD, Star-CCM+, XFOIL, Inventor, ANSYS STK</p>
-      <p><strong>Manufacturing & Systems:</strong> CNC Machining, Welding, Soldering, 3D Printing, Composites, Control Design</p>
+      <p><strong>CAD & Simulation:</strong> SolidWorks, AutoCAD, Star-CCM+, XFOIL, ANSYS STK</p>
+      <p><strong>Manufacturing & Systems:</strong> CNC Machining, Welding, Soldering, 3D Printing, Composites, Controls</p>
     </section>
 
-    <div style="text-align:center;">
-      <a href="Timothy Pham Engineering Resume.pdf" target="_blank" class="resume-btn">📄 View My Résumé</a>
-    </div>
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="card">
+        <p>📧 <a href="mailto:timpham@umich.edu">timpham@umich.edu</a><br>
+           🔗 <a href="https://www.linkedin.com/in/phamtimothyt/">linkedin.com/in/phamtimothyt</a><br>
+           💻 <a href="https://tp0049-web.github.io/Portfolio/">tp0049-web.github.io/Portfolio</a>
+        </p>
+      </div>
+    </section>
   </main>
 
   <footer>
@@ -230,7 +205,31 @@
   </footer>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    // Update year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Scroll animation reveal
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add("visible");
+      });
+    }, {threshold:0.1});
+    document.querySelectorAll(".card").forEach(el => observer.observe(el));
+
+    // Highlight active nav link
+    const sections = document.querySelectorAll("main section");
+    const navLinks = document.querySelectorAll("nav a");
+    window.addEventListener("scroll", () => {
+      let current = "";
+      sections.forEach(section => {
+        const top = section.offsetTop - 80;
+        if (pageYOffset >= top) current = section.getAttribute("id");
+      });
+      navLinks.forEach(a => {
+        a.classList.remove("active");
+        if (a.getAttribute("href").includes(current)) a.classList.add("active");
+      });
+    });
   </script>
 </body>
 </html>
