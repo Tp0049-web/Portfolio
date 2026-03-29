@@ -1,4 +1,3 @@
-<!-- Timothy Pham Portfolio – Pro Edition (Résumé link added) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,89 +16,184 @@
       --card: #12161b;
       --border: rgba(255,255,255,0.08);
     }
-    html {scroll-behavior:smooth;}
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
-      margin:0;
-      font-family:'Inter',system-ui,sans-serif;
-      background:var(--bg);
-      color:var(--text);
-      line-height:1.6;
+      margin: 0;
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
     }
+    img { max-width: 100%; display: block; }
 
-    /* === NAVBAR === */
     header {
-      position:sticky; top:0; z-index:100;
-      background:rgba(9,12,18,0.8);
-      backdrop-filter:blur(10px);
-      border-bottom:1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(9,12,18,0.82);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
     }
     nav {
-      max-width:1080px; margin:auto;
-      display:flex; justify-content:space-between; align-items:center;
-      padding:12px 20px;
+      max-width: 1080px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 20px;
+      gap: 16px;
     }
     nav a {
-      color:var(--muted); text-decoration:none; margin:0 12px;
-      font-weight:500; transition:color .2s;
+      color: var(--muted);
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: 500;
+      transition: color .2s;
     }
-    nav a:hover, nav a.active {color:var(--brand2);}
-    .name {font-weight:800; color:var(--text); font-size:1.1rem;}
+    nav a:hover, nav a.active { color: var(--brand2); }
+    .name { font-weight: 800; color: var(--text); font-size: 1.1rem; }
 
-    /* === HERO === */
     .hero {
-      text-align:center;
-      padding:100px 20px 70px;
-      background:linear-gradient(180deg,rgba(92,135,255,0.08),transparent 60%);
+      text-align: center;
+      padding: 100px 20px 70px;
+      background: linear-gradient(180deg, rgba(92,135,255,0.08), transparent 60%);
     }
     .hero h1 {
-      font-size:clamp(2.4rem,5vw,3.2rem);
-      color:var(--brand2);
-      margin-bottom:0.4rem;
+      font-size: clamp(2.4rem, 5vw, 3.2rem);
+      color: var(--brand2);
+      margin-bottom: 0.4rem;
     }
-    .hero p {color:var(--muted); max-width:700px; margin:auto;}
+    .hero p {
+      color: var(--muted);
+      max-width: 760px;
+      margin: auto;
+    }
     .hero-links a {
-      display:inline-block; margin:8px 10px; color:var(--brand);
-      font-weight:600; text-decoration:none;
+      display: inline-block;
+      margin: 8px 10px;
+      color: var(--brand);
+      font-weight: 600;
+      text-decoration: none;
     }
-    .hero-links a:hover {color:var(--brand2);}
+    .hero-links a:hover { color: var(--brand2); }
     .resume-btn {
-      display:inline-block;
-      background:linear-gradient(135deg,var(--brand),var(--brand2));
-      color:white; padding:14px 28px; border-radius:14px;
-      font-weight:600; margin-top:25px;
-      box-shadow:0 0 20px rgba(92,135,255,0.25);
-      transition:transform .25s ease, box-shadow .25s ease;
+      display: inline-block;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      color: white;
+      padding: 14px 28px;
+      border-radius: 14px;
+      font-weight: 600;
+      margin-top: 25px;
+      text-decoration: none;
+      box-shadow: 0 0 20px rgba(92,135,255,0.25);
+      transition: transform .25s ease, box-shadow .25s ease;
     }
-    .resume-btn:hover {transform:translateY(-3px); box-shadow:0 0 30px rgba(92,135,255,0.4);}
+    .resume-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 30px rgba(92,135,255,0.4);
+    }
 
-    /* === SECTIONS === */
-    main {max-width:1080px; margin:auto; padding:20px;}
-    section {margin-top:70px;}
+    main {
+      max-width: 1080px;
+      margin: auto;
+      padding: 20px;
+    }
+    section { margin-top: 70px; }
     h2 {
-      font-size:1.8rem;
-      border-bottom:1px solid var(--border);
-      padding-bottom:0.4rem;
+      font-size: 1.8rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.4rem;
+      margin-bottom: 22px;
     }
     .card {
-      background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));
-      border:1px solid var(--border);
-      border-radius:14px;
-      padding:18px 22px;
-      margin-bottom:16px;
-      opacity:0; transform:translateY(20px);
-      transition:opacity .6s ease, transform .6s ease;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 22px;
+      margin-bottom: 16px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .6s ease, transform .6s ease, box-shadow .25s ease;
     }
-    .card.visible {opacity:1; transform:translateY(0);}
-    .card:hover {transform:translateY(-3px); box-shadow:0 8px 22px rgba(0,0,0,0.3);}
-    ul {padding-left:18px;}
+    .card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 22px rgba(0,0,0,0.3);
+    }
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 6px;
+    }
+    .card p { margin-top: 0; }
+    ul { padding-left: 18px; }
+
+    .project-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .project-gallery figure {
+      margin: 0;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .project-gallery img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      background: #0d1118;
+    }
+    .project-gallery figcaption {
+      padding: 10px 12px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .skill-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+    }
+    .skill-box {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      background: rgba(255,255,255,0.02);
+    }
+    .skill-box h3 {
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-size: 1rem;
+      color: var(--brand2);
+    }
 
     footer {
-      text-align:center;
-      padding:40px 20px;
-      font-size:0.95rem;
-      color:var(--muted);
-      border-top:1px solid var(--border);
-      margin-top:60px;
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 0.95rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      margin-top: 60px;
+    }
+
+    @media (max-width: 760px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav div {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      nav a { margin: 0; }
     }
   </style>
 </head>
@@ -119,34 +213,47 @@
 
   <section class="hero" id="home">
     <h1>Timothy Pham</h1>
-    <p>Aerospace Engineering B.S. ’26 – University of Michigan<br>Minor: Space & Climate Engineering</p>
+    <p>Aerospace Engineering B.S. ’26 · University of Michigan</p>
+    <p>Student engineer focused on spacecraft systems, RF communications, vehicle design, and hands-on prototyping.</p>
     <div class="hero-links">
       <a href="mailto:timpham@umich.edu">Email</a> ·
-      <a href="https://www.linkedin.com/in/phamtimothyt/">LinkedIn</a> ·
-      <a href="Timothy Pham Engineering Resume .pdf" target="_blank">Résumé</a>
+      <a href="https://www.linkedin.com/in/phamtimothyt/" target="_blank" rel="noreferrer">LinkedIn</a> ·
+      <a href="Timothy_Pham_Resume.pdf" target="_blank">Résumé</a>
     </div>
-    <a href="Timothy Pham Engineering Resume .pdf" target="_blank" class="resume-btn">📄 View My Résumé</a>
+    <a href="Timothy_Pham_Resume.pdf" target="_blank" class="resume-btn">View My Résumé</a>
   </section>
 
   <main>
     <section id="experience">
       <h2>Experience</h2>
+
       <div class="card">
         <h3>DTE Energy – Power Distribution Engineering & Design Intern</h3>
-        <p><em>June 2025 – Present · Detroit, MI</em></p>
+        <p><em>June 2025 – December 2025 · Detroit, MI</em></p>
         <ul>
-          <li>Designed large-scale grid conversion projects using ESRI ArcMap & AutoCAD, impacting 100K+ customers.</li>
-          <li>Developed NETBANKs and system conversion work packages with detailed schematics.</li>
-          <li>Performed pole loading, voltage drop, and transformer sizing calculations.</li>
+          <li>Engineered city electrical grid conversion projects using ESRI ArcMap and AutoCAD Electrical, generating work packages and circuit diagrams impacting 100K+ customers.</li>
+          <li>Supported deployment of new NETBANKs and contributed to systemwide coverage planning.</li>
+          <li>Collected field data and assisted with construction plan development.</li>
         </ul>
       </div>
+
+      <div class="card">
+        <h3>DTE Energy – Program Management Co-op</h3>
+        <p><em>August 2024 – June 2025 · Detroit, MI</em></p>
+        <ul>
+          <li>Designed, implemented, and maintained electrical systems for 15 critical infrastructure projects.</li>
+          <li>Directed root-cause failure analyses and preventive-maintenance planning on sub-transmission networks.</li>
+          <li>Interpreted and redlined electrical schematics to ensure NESC/IEEE compliance and design integrity.</li>
+        </ul>
+      </div>
+
       <div class="card">
         <h3>Hyundai Motor Group – Vehicle Energy Efficiency Intern</h3>
-        <p><em>May 2024 – Aug 2024 · Ann Arbor, MI</em></p>
+        <p><em>May 2024 – August 2024 · Ann Arbor, MI</em></p>
         <ul>
-          <li>Validated and calibrated fuel economy parameters via ETAS INCA; improved MPG by 30%.</li>
-          <li>Co-developed a patent for an electronic key fob showing live vehicle diagnostics.</li>
-          <li>Automated calibration workflows using Python for .dat and .mdf datasets.</li>
+          <li>Used ETAS INCA to analyze vehicle performance data and calibrate fuel-economy parameters through CAN bus communication networks.</li>
+          <li>Developed Python automation scripts to parse and process large calibration datasets from .dat and .mdf files.</li>
+          <li>Optimized DFCO strategies and transmission shift logic to improve vehicle fuel efficiency.</li>
         </ul>
       </div>
     </section>
@@ -154,81 +261,60 @@
     <section id="research">
       <h2>Research</h2>
       <div class="card">
-        <h3>Michigan Target Fabrication & Research Facility (MiTRF)</h3>
-        <p><em>Undergraduate Research Assistant · Sep 2025 – Present · Ann Arbor, MI</em></p>
+        <h3>University of Michigan – Undergraduate Research Assistant</h3>
+        <p><em>September 2025 – Present · Ann Arbor, MI</em></p>
         <ul>
-          <li>Fabricate precision targets for high-energy-density and plasma physics experiments.</li>
-          <li>Utilized microscopy, CAD, and SLA 3D printing for micro-scale component fabrication.</li>
+          <li>Contribute to RF communications research for a CubeSat mission monitoring Lake Erie algal blooms.</li>
+          <li>Model UHF and S-band antenna radiation patterns in CST Studio Suite to reduce interference under orbital conditions.</li>
+          <li>Test RF components using a vector network analyzer (VNA) to verify impedance matching and evaluate S-parameters.</li>
+          <li>Develop STK and MATLAB simulations to evaluate link budgets and ground-station visibility.</li>
         </ul>
       </div>
     </section>
 
     <section id="projects">
       <h2>Projects</h2>
+
       <div class="card">
-        <h3>Autonomous Drone Project</h3>
-        <p><em>Personal Project · 2025</em></p>
+        <h3>Hovercraft Design and Implementation Competition</h3>
+        <p><em>University Project</em></p>
         <ul>
-          <li>Built a fully autonomous drone with a SpeedyBee F405 V4 controller and facial recognition.</li>
-          <li>Implemented onboard navigation via OpenCV and Python for PC-linked ground control.</li>
+          <li>Designed and built a competition hovercraft capable of navigating an obstacle course while transporting payloads.</li>
+          <li>Integrated thrust propulsion, inlet and impeller hardware, rudders, and payload mounts into a compact vehicle layout.</li>
+          <li>Implemented Arduino-based control with sensors and actuators to improve maneuvering precision during course navigation.</li>
+        </ul>
+
+        <div class="project-gallery">
+          <figure>
+            <img src="hovercraft_front.png" alt="Front view CAD of hovercraft showing payload mounts, rudders, and thrust propeller">
+            <figcaption>Front-view concept showing payload mounts, rudders, thrust propeller, and overall vehicle dimensions.</figcaption>
+          </figure>
+          <figure>
+            <img src="hovercraft_side.png" alt="Side view CAD of hovercraft showing rudders, thrust propeller, inlet and impeller, and skirt">
+            <figcaption>Side-view layout highlighting the rudders, thrust propeller, inlet and impeller, and hovercraft skirt.</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Michigan Aeronautical Science Association (MASA)</h3>
+        <p><em>Senior Member, Aerodynamics &amp; Recovery Subteam · September 2024 – Present · Ann Arbor, MI</em></p>
+        <ul>
+          <li>Led design, manufacturing, and testing of fin-mounted rollerons for passive roll stabilization on a solid-body rocket.</li>
+          <li>Modeled and iterated designs in CAD to improve aerodynamic performance and stability.</li>
+          <li>Achieved an approximately 50% reduction in roll rates, improving overall flight stability.</li>
         </ul>
       </div>
+
       <div class="card">
-        <h3>M-Racing – Formula SAE (Aerodynamics & Powertrain)</h3>
-        <p><em>Sep 2023 – Present · Ann Arbor, MI</em></p>
+        <h3>M-Racing Formula SAE Team</h3>
+        <p><em>Aerodynamics &amp; Powertrain Development Member · September 2023 – September 2025 · Ann Arbor, MI</em></p>
         <ul>
-          <li>Designed aero components using XFOIL & Star-CCM+; validated via CFD and wind-tunnel testing.</li>
+          <li>Modeled secondary wings in CATIA and validated performance with Star-CCM+.</li>
+          <li>Conducted wind tunnel testing to correlate simulation and experimental data, contributing to a 9% increase in performance.</li>
         </ul>
       </div>
     </section>
 
     <section id="skills">
-      <h2>Skills</h2>
-      <p><strong>Programming & Analysis:</strong> Python, C++, MATLAB/Simulink, VBA, C</p>
-      <p><strong>CAD & Simulation:</strong> SolidWorks, AutoCAD, Star-CCM+, XFOIL, ANSYS STK</p>
-      <p><strong>Manufacturing & Systems:</strong> CNC Machining, Welding, Soldering, 3D Printing, Composites, Controls</p>
-    </section>
-
-    <section id="contact">
-      <h2>Contact</h2>
-      <div class="card">
-        <p>📧 <a href="mailto:timpham@umich.edu">timpham@umich.edu</a><br>
-           🔗 <a href="https://www.linkedin.com/in/phamtimothyt/">linkedin.com/in/phamtimothyt</a><br>
-           📄 <a href="Timothy Pham Engineering Resume .pdf" target="_blank">View Résumé</a>
-        </p>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <small>© <span id="year"></span> Timothy Pham · Built with HTML/CSS · Hosted on GitHub Pages</small>
-  </footer>
-
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Scroll animation reveal
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add("visible");
-      });
-    }, {threshold:0.1});
-    document.querySelectorAll(".card").forEach(el => observer.observe(el));
-
-    // Highlight active nav link
-    const sections = document.querySelectorAll("main section");
-    const navLinks = document.querySelectorAll("nav a");
-    window.addEventListener("scroll", () => {
-      let current = "";
-      sections.forEach(section => {
-        const top = section.offsetTop - 80;
-        if (pageYOffset >= top) current = section.getAttribute("id");
-      });
-      navLinks.forEach(a => {
-        a.classList.remove("active");
-        if (a.getAttribute("href").includes(current)) a.classList.add("active");
-      });
-    });
-  </script>
-</body>
-</html>
+      <h2>
