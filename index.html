@@ -1,366 +1,431 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Timothy Pham – Aerospace Portfolio</title>
-  <meta name="description" content="Portfolio of Timothy Pham – Aerospace Engineering student at the University of Michigan" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #090c12;
-      --text: #eaf0f8;
-      --muted: #98a0b0;
-      --brand: #5c87ff;
-      --brand2: #8aa4ff;
-      --card: #12161b;
-      --border: rgba(255,255,255,0.08);
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: 'Inter', system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-    img { max-width: 100%; display: block; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Timothy Pham — Aerospace &amp; Space Systems</title>
+<meta name="description" content="Portfolio of Timothy Pham, Aerospace Engineering B.S. and Space Engineering M.Eng student at the University of Michigan.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%23EEF0EA%22/><path d=%22M20 70 L50 20 L80 70 Z%22 fill=%22none%22 stroke=%22%23B8863B%22 stroke-width=%226%22/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EEF0EA;
+    --paper-dim:#E4E7DF;
+    --ink:#1B2430;
+    --ink-soft:#4B5560;
+    --rule:#C3C9C0;
+    --amber:#B8863B;
+    --teal:#2F6E75;
+    --rust:#A6461F;
+    --card-bg:#F6F7F3;
+    --max:920px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans',system-ui,sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Space Grotesk',system-ui,sans-serif;
+    font-weight:600;
+    line-height:1.15;
+    margin:0 0 .5em;
+    letter-spacing:-0.01em;
+  }
+  p{margin:0 0 1em;max-width:62ch;}
+  a{color:var(--teal);text-decoration-thickness:1.5px;text-underline-offset:2px;}
+  a:hover{color:var(--rust);}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--rust);outline-offset:3px;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px;}
+  section{padding:64px 0;border-bottom:1px solid var(--rule);}
+  section:last-of-type{border-bottom:none;}
 
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(9,12,18,0.82);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
-    }
-    nav {
-      max-width: 1080px;
-      margin: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 20px;
-      gap: 16px;
-    }
-    nav a {
-      color: var(--muted);
-      text-decoration: none;
-      margin: 0 10px;
-      font-weight: 500;
-      transition: color .2s;
-    }
-    nav a:hover, nav a.active { color: var(--brand2); }
-    .name { font-weight: 800; color: var(--text); font-size: 1.1rem; }
+  /* header / nav */
+  header{
+    position:sticky;top:0;z-index:20;
+    background:rgba(238,240,234,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--rule);
+  }
+  .nav-inner{
+    max-width:var(--max);margin:0 auto;padding:14px 24px;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  }
+  .nav-name{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1rem;color:var(--ink);text-decoration:none;}
+  nav ul{list-style:none;display:flex;gap:20px;margin:0;padding:0;flex-wrap:wrap;}
+  nav a{color:var(--ink-soft);text-decoration:none;font-size:.92rem;}
+  nav a:hover{color:var(--rust);}
 
-    .hero {
-      text-align: center;
-      padding: 100px 20px 70px;
-      background: linear-gradient(180deg, rgba(92,135,255,0.08), transparent 60%);
-    }
-    .hero h1 {
-      font-size: clamp(2.4rem, 5vw, 3.2rem);
-      color: var(--brand2);
-      margin-bottom: 0.4rem;
-    }
-    .hero p {
-      color: var(--muted);
-      max-width: 760px;
-      margin: auto;
-    }
-    .hero-links a {
-      display: inline-block;
-      margin: 8px 10px;
-      color: var(--brand);
-      font-weight: 600;
-      text-decoration: none;
-    }
-    .hero-links a:hover { color: var(--brand2); }
-    .resume-btn {
-      display: inline-block;
-      background: linear-gradient(135deg, var(--brand), var(--brand2));
-      color: white;
-      padding: 14px 28px;
-      border-radius: 14px;
-      font-weight: 600;
-      margin-top: 25px;
-      text-decoration: none;
-      box-shadow: 0 0 20px rgba(92,135,255,0.25);
-      transition: transform .25s ease, box-shadow .25s ease;
-    }
-    .resume-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 0 30px rgba(92,135,255,0.4);
-    }
+  /* hero */
+  .hero{padding-top:56px;}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:start;}
+  @media(max-width:760px){.hero-grid{grid-template-columns:1fr;}}
+  .hero h1{font-size:clamp(1.9rem,4.2vw,2.7rem);max-width:14ch;}
+  .hero .lede{font-size:1.08rem;color:var(--ink-soft);max-width:44ch;}
+  .titleblock{
+    border:1px solid var(--ink);
+    background:var(--card-bg);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.82rem;
+  }
+  .titleblock .tb-row{display:flex;border-bottom:1px solid var(--rule);}
+  .titleblock .tb-row:last-child{border-bottom:none;}
+  .titleblock .tb-label{width:36%;padding:8px 10px;color:var(--ink-soft);border-right:1px solid var(--rule);}
+  .titleblock .tb-value{width:64%;padding:8px 10px;}
+  .hero-links{margin-top:16px;display:flex;gap:14px;flex-wrap:wrap;font-size:.92rem;}
+  .hero-links a{white-space:nowrap;}
 
-    main {
-      max-width: 1080px;
-      margin: auto;
-      padding: 20px;
-    }
-    section { margin-top: 70px; }
-    h2 {
-      font-size: 1.8rem;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 0.4rem;
-      margin-bottom: 22px;
-    }
-    .card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 18px 22px;
-      margin-bottom: 16px;
-      opacity: 1;
-      transform: translateY(0);
-      transition: transform .25s ease, box-shadow .25s ease;
-    }
-    .card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 22px rgba(0,0,0,0.3);
-    }
-    .card h3 {
-      margin-top: 0;
-      margin-bottom: 6px;
-    }
-    .card p { margin-top: 0; }
-    ul { padding-left: 18px; }
+  .stress-fig{width:100%;height:auto;display:block;}
+  .stress-fig .reveal{animation:sweep 1.4s ease-out both;}
+  @keyframes sweep{
+    from{clip-path:inset(0 100% 0 0);}
+    to{clip-path:inset(0 0 0 0);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .stress-fig .reveal{animation:none;}
+  }
 
-    .project-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px;
-      margin-top: 16px;
-    }
-    .project-gallery figure {
-      margin: 0;
-      background: rgba(255,255,255,0.02);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-    }
-    .project-gallery img {
-      width: 100%;
-      height: 240px;
-      object-fit: cover;
-      background: #0d1118;
-    }
-    .project-gallery figcaption {
-      padding: 10px 12px;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
+  /* section headings */
+  .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:28px;flex-wrap:wrap;}
+  .sec-head h2{font-size:1.5rem;}
+  .sec-head .count{font-family:'IBM Plex Mono',monospace;font-size:.82rem;color:var(--ink-soft);}
 
-    .skill-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 14px;
-    }
-    .skill-box {
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 16px;
-      background: rgba(255,255,255,0.02);
-    }
-    .skill-box h3 {
-      margin-top: 0;
-      margin-bottom: 8px;
-      font-size: 1rem;
-      color: var(--brand2);
-    }
+  /* education */
+  .edu-item{display:grid;grid-template-columns:150px 1fr;gap:18px;padding:16px 0;border-top:1px solid var(--rule);}
+  .edu-item:first-child{border-top:none;}
+  .edu-item .when{font-family:'IBM Plex Mono',monospace;font-size:.82rem;color:var(--ink-soft);}
+  .edu-item h3{font-size:1.05rem;margin-bottom:2px;}
+  .edu-item .place{color:var(--ink-soft);font-size:.92rem;margin-bottom:6px;}
+  @media(max-width:600px){.edu-item{grid-template-columns:1fr;}}
 
-    footer {
-      text-align: center;
-      padding: 40px 20px;
-      font-size: 0.95rem;
-      color: var(--muted);
-      border-top: 1px solid var(--border);
-      margin-top: 60px;
-    }
+  /* timeline (experience) */
+  .timeline{position:relative;padding-left:26px;}
+  .timeline::before{content:"";position:absolute;left:6px;top:6px;bottom:6px;width:1px;background:var(--rule);}
+  .tl-item{position:relative;padding-bottom:40px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{
+    content:"";position:absolute;left:-26px;top:6px;width:9px;height:9px;
+    border-radius:50%;background:var(--paper);border:2px solid var(--teal);
+  }
+  .tl-item .when{font-family:'IBM Plex Mono',monospace;font-size:.8rem;color:var(--ink-soft);display:block;margin-bottom:4px;}
+  .tl-item h3{font-size:1.08rem;margin-bottom:2px;}
+  .tl-item .role{color:var(--ink-soft);font-size:.94rem;margin-bottom:10px;}
+  .tl-item ul{margin:0;padding-left:1.15em;}
+  .tl-item li{margin-bottom:6px;max-width:62ch;}
+  .tl-item.current::before{background:var(--rust);border-color:var(--rust);}
 
-    @media (max-width: 760px) {
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      nav div {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-      }
-      nav a { margin: 0; }
-    }
-  </style>
+  /* cards (research/projects) */
+  .card-grid{display:grid;grid-template-columns:1fr;gap:22px;}
+  .card{
+    border:1px solid var(--rule);
+    background:var(--card-bg);
+  }
+  .card-top{
+    display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;
+    padding:14px 18px;border-bottom:1px solid var(--rule);
+  }
+  .card-top h3{font-size:1.05rem;margin:0;}
+  .card-top .meta{font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:var(--ink-soft);white-space:nowrap;}
+  .card-body{padding:16px 18px 20px;}
+  .card-body ul{margin:0;padding-left:1.15em;}
+  .card-body li{margin-bottom:6px;}
+  .card-body .sub{color:var(--ink-soft);font-size:.92rem;margin-bottom:10px;}
+  .card-imgs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;}
+  .card-imgs figure{margin:0;border:1px solid var(--rule);background:#fff;padding:6px;}
+  .card-imgs img{display:block;width:100%;height:auto;}
+  .card-imgs figcaption{font-size:.78rem;color:var(--ink-soft);padding-top:6px;}
+  @media(max-width:600px){.card-imgs{grid-template-columns:1fr;}}
+
+  /* skills */
+  .skill-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  @media(max-width:700px){.skill-grid{grid-template-columns:1fr;}}
+  .skill-cat h3{font-size:.95rem;color:var(--ink-soft);font-weight:500;margin-bottom:10px;}
+  .skill-cat .items{font-family:'IBM Plex Mono',monospace;font-size:.86rem;line-height:1.9;}
+
+  /* contact / footer */
+  footer{padding:48px 0 60px;}
+  .contact-list{display:flex;gap:28px;flex-wrap:wrap;margin-bottom:24px;font-size:.98rem;}
+  .fine{color:var(--ink-soft);font-size:.82rem;font-family:'IBM Plex Mono',monospace;}
+</style>
 </head>
 <body>
-  <header>
-    <nav>
-      <span class="name">Timothy Pham</span>
-      <div>
-        <a href="#experience">Experience</a>
-        <a href="#research">Research</a>
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </nav>
-  </header>
 
-  <section class="hero" id="home">
-    <h1>Timothy Pham</h1>
-    <p>Aerospace Engineering B.S. ’26 · University of Michigan</p>
-    <p>Upcoming Master's Student at University of Michigan.</p>
-    <div class="hero-links">
-      <a href="mailto:timpham@umich.edu">Email</a> ·
-      <a href="https://www.linkedin.com/in/phamtimothyt/" target="_blank" rel="noreferrer">LinkedIn</a> ·
-      <a href="Timothy_Pham_Resume.pdf" target="_blank">Résumé</a>
+<header>
+  <div class="nav-inner">
+    <a class="nav-name" href="#top">Timothy Pham</a>
+    <nav aria-label="Section navigation">
+      <ul>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#research">Research &amp; Projects</a></li>
+        <li><a href="#projects">Design Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero wrap">
+    <div class="hero-grid">
+      <div>
+        <h1>Building the hardware that space systems run on.</h1>
+        <p class="lede">Aerospace engineer working across structural validation, CAD, and space instrumentation — from tow bumpers and chassis to electron guns for a Los Alamos plasma-wave mission concept.</p>
+        <div class="hero-links">
+          <a href="mailto:timpham@umich.edu">timpham@umich.edu</a>
+          <a href="https://www.linkedin.com/in/phamtimothyt/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="Timothy_Pham_Resume.pdf" target="_blank" rel="noopener">Résumé (PDF)</a>
+        </div>
+      </div>
+      <div>
+        <div class="titleblock">
+          <div class="tb-row"><div class="tb-label">Focus</div><div class="tb-value">Space systems &amp; instrumentation</div></div>
+          <div class="tb-row"><div class="tb-label">Status</div><div class="tb-value">M.Eng in progress — exp. May 2027</div></div>
+          <div class="tb-row"><div class="tb-label">Based</div><div class="tb-value">Ann Arbor, MI</div></div>
+          <div class="tb-row"><div class="tb-label">Eligibility</div><div class="tb-value">U.S. Citizen</div></div>
+        </div>
+        <svg class="stress-fig" viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Stylized stress-contour diagram of a bracket under load">
+          <defs>
+            <linearGradient id="stressGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#2F6E75"/>
+              <stop offset="45%" stop-color="#B8863B"/>
+              <stop offset="100%" stop-color="#A6461F"/>
+            </linearGradient>
+          </defs>
+          <g class="reveal">
+            <path d="M20 40 L120 40 L120 90 L260 90 L260 140 L120 140 L120 190 L20 190 Z" fill="url(#stressGrad)" opacity="0.9"/>
+            <circle cx="60" cy="65" r="9" fill="var(--paper)" stroke="#1B2430" stroke-width="1.5"/>
+            <circle cx="60" cy="165" r="9" fill="var(--paper)" stroke="#1B2430" stroke-width="1.5"/>
+            <circle cx="230" cy="115" r="7" fill="var(--paper)" stroke="#1B2430" stroke-width="1.5"/>
+            <g stroke="#1B2430" stroke-width="0.75" opacity="0.55">
+              <line x1="20" y1="30" x2="120" y2="30"/>
+              <line x1="20" y1="26" x2="20" y2="34"/>
+              <line x1="120" y1="26" x2="120" y2="34"/>
+              <line x1="270" y1="90" x2="290" y2="90"/>
+              <line x1="270" y1="140" x2="290" y2="140"/>
+              <line x1="286" y1="90" x2="286" y2="140"/>
+            </g>
+          </g>
+          <text x="20" y="18" font-family="IBM Plex Mono, monospace" font-size="10" fill="#4B5560">FEA — stress concentration, bracket, arbitrary units</text>
+        </svg>
+      </div>
     </div>
-    <a href="Timothy_Pham_Resume.pdf" target="_blank" class="resume-btn">View My Résumé</a>
   </section>
 
-  <main>
-    <section id="experience">
-      <h2>Experience</h2>
+  <section id="education" class="wrap">
+    <div class="sec-head"><h2>Education</h2></div>
+    <div class="edu-item">
+      <div class="when">2027</div>
+      <div>
+        <h3>M.Eng, Space Engineering</h3>
+        <div class="place">University of Michigan · Ann Arbor, MI · Concentration: Electronic Instrumentation &amp; Sensor Payloads</div>
+        <p>Expected May 2027.</p>
+      </div>
+    </div>
+    <div class="edu-item">
+      <div class="when">2026</div>
+      <div>
+        <h3>B.S., Aerospace Engineering</h3>
+        <div class="place">University of Michigan · Ann Arbor, MI</div>
+        <p>Completed May 2026.</p>
+      </div>
+    </div>
+  </section>
 
-      <div class="card">
-        <h3>DTE Energy – Power Distribution Engineering & Design Intern</h3>
-        <p><em>June 2025 – December 2025 · Detroit, MI</em></p>
+  <section id="experience" class="wrap">
+    <div class="sec-head">
+      <h2>Experience</h2>
+      <span class="count mono">4 roles</span>
+    </div>
+    <div class="timeline">
+
+      <div class="tl-item current">
+        <span class="when">May 2026 — Present · Madison Heights, MI</span>
+        <h3>Navistar Defense</h3>
+        <div class="role">Systems Engineering Intern</div>
+        <ul>
+          <li>Validated structural integrity of tow bumpers and chassis components across 12 projects using Finite Element Analysis (FEA) in Siemens NX, ensuring designs met customer requirements.</li>
+          <li>Designed CAD fixtures for custom applications and integrated specialized electronics and hardware into center console systems across 4 projects.</li>
+          <li>Built an HTML-based document management system integrated with cloud infrastructure and Power BI dashboards, centralizing data for 500+ engineering projects.</li>
+          <li>Developed a quote automation tool that cut manual quote-entry time from 60 to 10 minutes per quote (~83% reduction).</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <span class="when">June 2025 — December 2025 · Detroit, MI</span>
+        <h3>DTE Energy</h3>
+        <div class="role">Power Distribution Engineering &amp; Design Intern</div>
         <ul>
           <li>Engineered city electrical grid conversion projects using ESRI ArcMap and AutoCAD Electrical, generating work packages and circuit diagrams impacting 100K+ customers.</li>
-          <li>Supported deployment of new NETBANKs and contributed to systemwide coverage planning.</li>
+          <li>Supported deployment of new transformers for coverage-wide expansion across Detroit.</li>
           <li>Collected field data and assisted with construction plan development.</li>
         </ul>
       </div>
 
-      <div class="card">
-        <h3>DTE Energy – Program Management Co-op</h3>
-        <p><em>August 2024 – June 2025 · Detroit, MI</em></p>
+      <div class="tl-item">
+        <span class="when">August 2024 — June 2025 · Detroit, MI</span>
+        <h3>DTE Energy</h3>
+        <div class="role">Program Management Co-op</div>
         <ul>
-          <li>Designed, implemented, and maintained electrical systems for 15 critical infrastructure projects.</li>
-          <li>Directed root-cause failure analyses and preventive-maintenance planning on sub-transmission networks.</li>
-          <li>Interpreted and redlined electrical schematics to ensure NESC/IEEE compliance and design integrity.</li>
+          <li>Supported design and commissioning of electrical systems across 15 concurrent infrastructure projects.</li>
+          <li>Authored work orders and project proposals that streamlined planning workflows and reduced approval cycle time.</li>
+          <li>Built a Power BI dashboard comprising 150+ concurrent projects and 400 past projects, improving data collection and streamlining meetings.</li>
         </ul>
       </div>
 
-      <div class="card">
-        <h3>Hyundai Motor Group – Vehicle Energy Efficiency Intern</h3>
-        <p><em>May 2024 – August 2024 · Ann Arbor, MI</em></p>
+      <div class="tl-item">
+        <span class="when">May 2024 — August 2024 · Ann Arbor, MI</span>
+        <h3>Hyundai Motor Group</h3>
+        <div class="role">Vehicle Energy Efficiency Intern</div>
         <ul>
           <li>Used ETAS INCA to analyze vehicle performance data and calibrate fuel-economy parameters through CAN bus communication networks.</li>
           <li>Developed Python automation scripts to parse and process large calibration datasets from .dat and .mdf files.</li>
-          <li>Optimized DFCO strategies and transmission shift logic to improve vehicle fuel efficiency.</li>
+          <li>Researched hybrid propulsion architectures and extended-range EV systems, synthesizing findings into technical reports for engineering teams.</li>
         </ul>
       </div>
-    </section>
 
-    <section id="research">
-      <h2>Research</h2>
-      <div class="card">
-        <h3>University of Michigan – Undergraduate Research Assistant</h3>
-        <p><em>September 2025 – Present · Ann Arbor, MI</em></p>
-        <ul>
-          <li>Contribute to RF communications research for a CubeSat mission monitoring Lake Erie algal blooms.</li>
-          <li>Test RF components using a vector network analyzer (VNA) to verify impedance matching and evaluate S-parameters.</li>
-          <li>Develop STK and MATLAB simulations to evaluate link budgets and ground-station visibility.</li>
-        </ul>
-      </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="projects">
-      <h2>Projects</h2>
+  <section id="research" class="wrap">
+    <div class="sec-head">
+      <h2>Research &amp; Current Projects</h2>
+      <span class="count mono">2 active</span>
+    </div>
+    <div class="card-grid">
 
       <div class="card">
-        <h3>Hovercraft Design and Implementation Competition</h3>
-        <p><em>University Project</em></p>
-        <ul>
-          <li>Designed and built a competition hovercraft capable of navigating an obstacle course while transporting payloads.</li>
-          <li>Integrated thrust propulsion, inlet and impeller hardware, rudders, and payload mounts into a compact vehicle layout.</li>
-          <li>Implemented Arduino-based control with sensors and actuators to improve maneuvering precision during course navigation.</li>
-        </ul>
-
-        <div class="project-gallery">
-          <figure>
-            <img src="hovercraft_front.png" alt="Front view CAD of hovercraft showing payload mounts, rudders, and thrust propeller">
-            <figcaption>Front-view concept showing payload mounts, rudders, thrust propeller, and overall vehicle dimensions.</figcaption>
-          </figure>
-          <figure>
-            <img src="hovercraft_side.png" alt="Side view CAD of hovercraft showing rudders, thrust propeller, inlet and impeller, and skirt">
-            <figcaption>Side-view layout highlighting the rudders, thrust propeller, inlet and impeller, and hovercraft skirt.</figcaption>
-          </figure>
+        <div class="card-top">
+          <h3>Whistler-Wave Plasma Instrumentation — SPACE 582</h3>
+          <span class="meta">Fall 2026 · LANL-sponsored</span>
+        </div>
+        <div class="card-body">
+          <p class="sub">Graduate space systems design project sponsored by Los Alamos National Laboratory, centered on generating VLF plasma waves in space via a compact, modulated electron gun.</p>
+          <ul>
+            <li>Working within a mission concept addressing the engineering challenge of radiating waves whose wavelength exceeds 1&nbsp;km using conventional antennas.</li>
+            <li>Evaluating a compact electron gun and modulator system designed to generate 1&nbsp;µs modulated pulses as a compact alternative to large deployable antennas.</li>
+            <li>Project scope includes electron source design (gridded gun vs. mod-anode configurations), shock/vibration qualification of cathode hardware, and integration with a high-voltage power supply and modulator.</li>
+          </ul>
         </div>
       </div>
 
       <div class="card">
-        <h3>Michigan Aeronautical Science Association (MASA)</h3>
-        <p><em>Senior Member, Aerodynamics &amp; Recovery Subteam · September 2024 – Present · Ann Arbor, MI</em></p>
-        <ul>
-          <li>Led design, manufacturing, and testing of fin-mounted rollerons for passive roll stabilization on a solid-body rocket.</li>
-          <li>Modeled and iterated designs in CAD to improve aerodynamic performance and stability.</li>
-          <li>Achieved an approximately 50% reduction in roll rates, improving overall flight stability.</li>
-        </ul>
+        <div class="card-top">
+          <h3>Undergraduate Research Assistant</h3>
+          <span class="meta">Sept 2025 — Present · Ann Arbor, MI</span>
+        </div>
+        <div class="card-body">
+          <ul>
+            <li>Contribute to RF communications research supporting a CubeSat mission and space-weather monitoring work.</li>
+            <li>Test RF components using a vector network analyzer (VNA) to verify impedance matching and evaluate S-parameters.</li>
+            <li>Develop STK and MATLAB simulations to evaluate link budgets and ground-station visibility.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="projects" class="wrap">
+    <div class="sec-head">
+      <h2>Design Projects</h2>
+      <span class="count mono">3 builds</span>
+    </div>
+    <div class="card-grid">
+
+      <div class="card">
+        <div class="card-top">
+          <h3>Hovercraft Design &amp; Implementation Competition</h3>
+          <span class="meta">University project</span>
+        </div>
+        <div class="card-body">
+          <ul>
+            <li>Designed and built a competition hovercraft capable of navigating an obstacle course while transporting payloads.</li>
+            <li>Integrated thrust propulsion, inlet and impeller hardware, rudders, and payload mounts into a compact vehicle layout.</li>
+            <li>Implemented Arduino-based control with sensors and actuators to improve maneuvering precision during course navigation.</li>
+          </ul>
+          <div class="card-imgs">
+            <figure>
+              <img src="hovercraft_front.png" alt="Front view CAD of hovercraft showing payload mounts, rudders, and thrust propeller" loading="lazy">
+              <figcaption>Front view — payload mounts, rudders, thrust propeller.</figcaption>
+            </figure>
+            <figure>
+              <img src="hovercraft_side.png" alt="Side view CAD of hovercraft showing rudders, thrust propeller, inlet and impeller, and skirt" loading="lazy">
+              <figcaption>Side view — inlet/impeller and skirt layout.</figcaption>
+            </figure>
+          </div>
+        </div>
       </div>
 
       <div class="card">
-        <h3>M-Racing Formula SAE Team</h3>
-        <p><em>Aerodynamics &amp; Powertrain Development Member · September 2023 – September 2025 · Ann Arbor, MI</em></p>
-        <ul>
-          <li>Modeled secondary wings in CATIA and validated performance with Star-CCM+.</li>
-          <li>Conducted wind tunnel testing to correlate simulation and experimental data, contributing to a 9% increase in performance.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="skills">
-      <h2>Skills</h2>
-      <div class="skill-grid">
-        <div class="skill-box">
-          <h3>Programming &amp; Analysis</h3>
-          <p>Python, C++, MATLAB/Simulink, VBA, C, CST Studio</p>
+        <div class="card-top">
+          <h3>Michigan Aeronautical Science Association (MASA)</h3>
+          <span class="meta">Sept 2024 — Present · Aerodynamics &amp; Recovery</span>
         </div>
-        <div class="skill-box">
-          <h3>CAD &amp; Simulation</h3>
-          <p>CATIA, Star-CCM+, AutoCAD, SolidWorks, Inventor, XFoil, ANSYS STK, Ansys CFD</p>
-        </div>
-        <div class="skill-box">
-          <h3>Hardware &amp; Systems</h3>
-          <p>Arduino, sensor integration, electrical schematics, ESRI ArcMap, ETAS INCA, VNA testing</p>
+        <div class="card-body">
+          <ul>
+            <li>Led design, manufacturing, and testing of fin-mounted rollerons for passive roll stabilization on a solid-body rocket.</li>
+            <li>Modeled and iterated designs in CAD to improve aerodynamic performance and stability.</li>
+            <li>Achieved an approximately 50% reduction in roll rates, improving overall flight stability.</li>
+          </ul>
         </div>
       </div>
-    </section>
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <div class="card visible">
-        <p>
-          📧 <a href="mailto:timpham@umich.edu">timpham@umich.edu</a><br>
-          🔗 <a href="https://www.linkedin.com/in/phamtimothyt/" target="_blank" rel="noreferrer">linkedin.com/in/phamtimothyt</a><br>
-          📄 <a href="Timothy_Pham_Resume.pdf" target="_blank">View Résumé</a>
-        </p>
+      <div class="card">
+        <div class="card-top">
+          <h3>M-Racing Formula SAE Team</h3>
+          <span class="meta">Sept 2023 — Sept 2025 · Aerodynamics &amp; Powertrain</span>
+        </div>
+        <div class="card-body">
+          <ul>
+            <li>Modeled secondary wings in CATIA and validated performance with Star-CCM+.</li>
+            <li>Conducted wind tunnel testing to correlate simulation and experimental data, contributing to a 9% increase in performance.</li>
+          </ul>
+        </div>
       </div>
-    </section>
-  </main>
 
-  <footer>
-    <small>© <span id="year"></span> Timothy Pham · Built with HTML/CSS · Hosted on GitHub Pages</small>
+    </div>
+  </section>
+
+  <section id="skills" class="wrap">
+    <div class="sec-head"><h2>Skills</h2></div>
+    <div class="skill-grid">
+      <div class="skill-cat">
+        <h3>Programming &amp; analysis</h3>
+        <div class="items">Python<br>C++<br>MATLAB / Simulink<br>VBA<br>C<br>CST Studio Suite</div>
+      </div>
+      <div class="skill-cat">
+        <h3>CAD &amp; simulation</h3>
+        <div class="items">Siemens NX (FEA)<br>CATIA<br>SolidWorks<br>AutoCAD<br>Inventor<br>Star-CCM+<br>STK<br>XFoil<br>Ansys CFD</div>
+      </div>
+      <div class="skill-cat">
+        <h3>Hardware &amp; systems</h3>
+        <div class="items">Arduino<br>Sensor integration<br>CAN bus systems<br>PCB<br>Electrical schematics<br>VNA testing<br>ESRI ArcMap<br>ETAS INCA</div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact" class="wrap">
+    <div class="sec-head"><h2>Contact</h2></div>
+    <div class="contact-list">
+      <a href="mailto:timpham@umich.edu">timpham@umich.edu</a>
+      <a href="https://www.linkedin.com/in/phamtimothyt/" target="_blank" rel="noopener">linkedin.com/in/phamtimothyt</a>
+      <a href="Timothy_Pham_Resume.pdf" target="_blank" rel="noopener">View résumé (PDF)</a>
+    </div>
+    <div class="fine">© Timothy Pham · Built with HTML/CSS · Hosted on GitHub Pages</div>
   </footer>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    const sections = document.querySelectorAll('main section');
-    const navLinks = document.querySelectorAll('nav a');
-    window.addEventListener('scroll', () => {
-      let current = '';
-      sections.forEach(section => {
-        const top = section.offsetTop - 80;
-        if (window.pageYOffset >= top) current = section.getAttribute('id');
-      });
-      navLinks.forEach(a => {
-        a.classList.remove('active');
-        if (a.getAttribute('href').includes(current)) a.classList.add('active');
-      });
-    });
-  </script>
+</main>
 </body>
 </html>
