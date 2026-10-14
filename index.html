@@ -45,7 +45,7 @@
   a:hover{color:var(--rust);}
   a:focus-visible, button:focus-visible{outline:2px solid var(--rust);outline-offset:3px;}
   .mono{font-family:'IBM Plex Mono',monospace;}
-  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px;}
+  .wrap{max-width:var(--max);margin:0 auto;padding-left:24px;padding-right:24px;}
   section{padding:64px 0;border-bottom:1px solid var(--rule);}
   section:last-of-type{border-bottom:none;}
 
@@ -84,16 +84,6 @@
   .hero-links{margin-top:16px;display:flex;gap:14px;flex-wrap:wrap;font-size:.92rem;}
   .hero-links a{white-space:nowrap;}
 
-  .stress-fig{width:100%;height:auto;display:block;}
-  .stress-fig .reveal{animation:sweep 1.4s ease-out both;}
-  @keyframes sweep{
-    from{clip-path:inset(0 100% 0 0);}
-    to{clip-path:inset(0 0 0 0);}
-  }
-  @media (prefers-reduced-motion: reduce){
-    .stress-fig .reveal{animation:none;}
-  }
-
   /* section headings */
   .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:28px;flex-wrap:wrap;}
   .sec-head h2{font-size:1.5rem;}
@@ -123,8 +113,30 @@
   .tl-item li{margin-bottom:6px;max-width:62ch;}
   .tl-item.current::before{background:var(--rust);border-color:var(--rust);}
 
+  /* organisation logos and photo */
+  .org-head{display:flex;gap:14px;align-items:center;margin-bottom:10px;}
+  .tl-item .org-head h3{margin:0 0 2px;}
+  .tl-item .org-head .role{margin:0;}
+  .logo{
+    flex:none;width:48px;height:48px;padding:6px;
+    display:flex;align-items:center;justify-content:center;
+    background:#fff;border:1px solid var(--rule);
+  }
+  .logo img{display:block;max-width:100%;max-height:100%;object-fit:contain;}
+  .logo.no-img img{display:none;}
+  .logo.no-img::before{
+    content:attr(data-initials);
+    font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:var(--ink-soft);
+  }
+  .logo.sm{width:32px;height:32px;padding:4px;}
+  .logo.sm.no-img::before{font-size:.68rem;}
+  .org{display:flex;align-items:center;gap:10px;}
+  .shot{margin:18px 0 0;max-width:640px;border:1px solid var(--rule);background:#fff;padding:6px;}
+  .shot img{display:block;width:100%;height:auto;}
+  .shot figcaption{font-size:.78rem;color:var(--ink-soft);padding-top:6px;}
+
   /* cards (research/projects) */
-  .card-grid{display:grid;grid-template-columns:1fr;gap:22px;}
+  .card-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:22px;}
   .card{
     border:1px solid var(--rule);
     background:var(--card-bg);
@@ -139,11 +151,14 @@
   .card-body ul{margin:0;padding-left:1.15em;}
   .card-body li{margin-bottom:6px;}
   .card-body .sub{color:var(--ink-soft);font-size:.92rem;margin-bottom:10px;}
-  .card-imgs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;}
+  .card-imgs{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;margin-top:14px;}
   .card-imgs figure{margin:0;border:1px solid var(--rule);background:#fff;padding:6px;}
   .card-imgs img{display:block;width:100%;height:auto;}
   .card-imgs figcaption{font-size:.78rem;color:var(--ink-soft);padding-top:6px;}
-  @media(max-width:600px){.card-imgs{grid-template-columns:1fr;}}
+  @media(max-width:600px){
+    .card-imgs{grid-template-columns:minmax(0,1fr);}
+    .card-top .meta{white-space:normal;}
+  }
 
   /* skills */
   .skill-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
@@ -195,30 +210,6 @@
           <div class="tb-row"><div class="tb-label">Based</div><div class="tb-value">Ann Arbor, MI</div></div>
           <div class="tb-row"><div class="tb-label">Eligibility</div><div class="tb-value">U.S. Citizen</div></div>
         </div>
-        <svg class="stress-fig" viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Stylized stress-contour diagram of a bracket under load">
-          <defs>
-            <linearGradient id="stressGrad" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#2F6E75"/>
-              <stop offset="45%" stop-color="#B8863B"/>
-              <stop offset="100%" stop-color="#A6461F"/>
-            </linearGradient>
-          </defs>
-          <g class="reveal">
-            <path d="M20 40 L120 40 L120 90 L260 90 L260 140 L120 140 L120 190 L20 190 Z" fill="url(#stressGrad)" opacity="0.9"/>
-            <circle cx="60" cy="65" r="9" fill="var(--paper)" stroke="#1B2430" stroke-width="1.5"/>
-            <circle cx="60" cy="165" r="9" fill="var(--paper)" stroke="#1B2430" stroke-width="1.5"/>
-            <circle cx="230" cy="115" r="7" fill="var(--paper)" stroke="#1B2430" stroke-width="1.5"/>
-            <g stroke="#1B2430" stroke-width="0.75" opacity="0.55">
-              <line x1="20" y1="30" x2="120" y2="30"/>
-              <line x1="20" y1="26" x2="20" y2="34"/>
-              <line x1="120" y1="26" x2="120" y2="34"/>
-              <line x1="270" y1="90" x2="290" y2="90"/>
-              <line x1="270" y1="140" x2="290" y2="140"/>
-              <line x1="286" y1="90" x2="286" y2="140"/>
-            </g>
-          </g>
-          <text x="20" y="18" font-family="IBM Plex Mono, monospace" font-size="10" fill="#4B5560">FEA — stress concentration, bracket, arbitrary units</text>
-        </svg>
       </div>
     </div>
   </section>
@@ -252,20 +243,34 @@
 
       <div class="tl-item current">
         <span class="when">May 2026 — Present · Madison Heights, MI</span>
-        <h3>Navistar Defense</h3>
-        <div class="role">Systems Engineering Intern</div>
+        <div class="org-head">
+          <span class="logo" data-initials="ND"><img src="logos/navistar.png" data-domain="navistar.com" alt="" width="36" height="36"></span>
+          <div>
+            <h3>Navistar Defense</h3>
+            <div class="role">Systems Engineering Intern</div>
+          </div>
+        </div>
         <ul>
           <li>Validated structural integrity of tow bumpers and chassis components across 12 projects using Finite Element Analysis (FEA) in Siemens NX, ensuring designs met customer requirements.</li>
           <li>Designed CAD fixtures for custom applications and integrated specialized electronics and hardware into center console systems across 4 projects.</li>
           <li>Built an HTML-based document management system integrated with cloud infrastructure and Power BI dashboards, centralizing data for 500+ engineering projects.</li>
           <li>Developed a quote automation tool that cut manual quote-entry time from 60 to 10 minutes per quote (~83% reduction).</li>
         </ul>
+        <figure class="shot">
+          <img src="navistar_crane.jpg" alt="Truck-mounted hydraulic crane lifting a pallet of stacked tires, with a second military truck and a flatbed trailer in the background" width="1800" height="1143" loading="lazy">
+          <figcaption>Truck-mounted crane lifting a pallet of tires, Navistar Defense.</figcaption>
+        </figure>
       </div>
 
       <div class="tl-item">
         <span class="when">June 2025 — December 2025 · Detroit, MI</span>
-        <h3>DTE Energy</h3>
-        <div class="role">Power Distribution Engineering &amp; Design Intern</div>
+        <div class="org-head">
+          <span class="logo" data-initials="DTE"><img src="logos/dte.png" data-domain="dteenergy.com" alt="" width="36" height="36"></span>
+          <div>
+            <h3>DTE Energy</h3>
+            <div class="role">Power Distribution Engineering &amp; Design Intern</div>
+          </div>
+        </div>
         <ul>
           <li>Engineered city electrical grid conversion projects using ESRI ArcMap and AutoCAD Electrical, generating work packages and circuit diagrams impacting 100K+ customers.</li>
           <li>Supported deployment of new transformers for coverage-wide expansion across Detroit.</li>
@@ -275,8 +280,13 @@
 
       <div class="tl-item">
         <span class="when">August 2024 — June 2025 · Detroit, MI</span>
-        <h3>DTE Energy</h3>
-        <div class="role">Program Management Co-op</div>
+        <div class="org-head">
+          <span class="logo" data-initials="DTE"><img src="logos/dte.png" data-domain="dteenergy.com" alt="" width="36" height="36"></span>
+          <div>
+            <h3>DTE Energy</h3>
+            <div class="role">Program Management Co-op</div>
+          </div>
+        </div>
         <ul>
           <li>Supported design and commissioning of electrical systems across 15 concurrent infrastructure projects.</li>
           <li>Authored work orders and project proposals that streamlined planning workflows and reduced approval cycle time.</li>
@@ -286,8 +296,13 @@
 
       <div class="tl-item">
         <span class="when">May 2024 — August 2024 · Ann Arbor, MI</span>
-        <h3>Hyundai Motor Group</h3>
-        <div class="role">Vehicle Energy Efficiency Intern</div>
+        <div class="org-head">
+          <span class="logo" data-initials="HMG"><img src="logos/hyundai.png" data-domain="hyundai.com" alt="" width="36" height="36"></span>
+          <div>
+            <h3>Hyundai Motor Group</h3>
+            <div class="role">Vehicle Energy Efficiency Intern</div>
+          </div>
+        </div>
         <ul>
           <li>Used ETAS INCA to analyze vehicle performance data and calibrate fuel-economy parameters through CAN bus communication networks.</li>
           <li>Developed Python automation scripts to parse and process large calibration datasets from .dat and .mdf files.</li>
@@ -301,51 +316,16 @@
   <section id="research" class="wrap">
     <div class="sec-head">
       <h2>Research &amp; Current Projects</h2>
-      <span class="count mono">3 active</span>
+      <span class="count mono">2 active</span>
     </div>
     <div class="card-grid">
 
       <div class="card">
         <div class="card-top">
-          <h3>AERO 483 PDR — Communications &amp; Telemetry Subsystem Lead</h3>
-          <span class="meta">April 2026 · Team 8: KSP</span>
-        </div>
-        <div class="card-body">
-          <p class="sub">Led the communications and telemetry subsystem for a team spacecraft preliminary design review, targeting a Sun–Earth L1 halo orbit.</p>
-          <ul>
-            <li>Selected a dual X-band / Ka-band architecture, Ka-band as the primary high-rate downlink and X-band as a lower-rate backup, based on a trade study of flight hardware options.</li>
-            <li>Modeled link budget performance (received power, carrier-to-noise density ratio, link margin, and achievable data rate) as a function of distance from Earth.</li>
-            <li>Verified a Ka-band link margin of 14.6 dB and an X-band margin of 5.9 dB at the L1 operating distance of 1.5 million km, both clearing the mission's minimum threshold.</li>
-            <li>Confirmed compatibility with existing 34 m DSN ground antennas across both bands.</li>
-          </ul>
-          <div class="card-imgs">
-            <figure>
-              <img src="comms_figures/comms_fig4_received_power.png" alt="Received power vs. distance for X-band and Ka-band links" loading="lazy">
-              <figcaption>Received power vs. distance — Ka-band sustains higher power across the full range.</figcaption>
-            </figure>
-            <figure>
-              <img src="comms_figures/comms_fig5_cn0_ratio.png" alt="Carrier-to-noise density ratio vs. distance for X-band and Ka-band" loading="lazy">
-              <figcaption>Carrier-to-noise density ratio (C/N0) vs. distance.</figcaption>
-            </figure>
-            <figure>
-              <img src="comms_figures/comms_fig6_link_margin.png" alt="Communication link margin vs. distance from Earth" loading="lazy">
-              <figcaption>Link margin vs. distance — both bands clear threshold at L1.</figcaption>
-            </figure>
-            <figure>
-              <img src="comms_figures/comms_fig7_margin_vs_datarate.png" alt="Link margin vs. data rate at the L1 operating distance" loading="lazy">
-              <figcaption>Link margin vs. data rate at the L1 operating distance.</figcaption>
-            </figure>
-            <figure>
-              <img src="comms_figures/comms_fig8_dish_diameter.png" alt="Ground dish diameter vs. Eb/N0 at 1.5 million km" loading="lazy">
-              <figcaption>Ground dish diameter vs. Eb/N0 — confirms DSN compatibility.</figcaption>
-            </figure>
+          <div class="org">
+            <span class="logo sm" data-initials="LA" title="Sponsor: Los Alamos National Laboratory"><img src="logos/lanl.png" data-domain="lanl.gov" alt="" width="24" height="24"></span>
+            <h3>Whistler-Wave Plasma Instrumentation — SPACE 582</h3>
           </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-top">
-          <h3>Whistler-Wave Plasma Instrumentation — SPACE 582</h3>
           <span class="meta">Fall 2026 · LANL-sponsored</span>
         </div>
         <div class="card-body">
@@ -360,15 +340,43 @@
 
       <div class="card">
         <div class="card-top">
-          <h3>Undergraduate Research Assistant</h3>
+          <div class="org">
+            <span class="logo sm" data-initials="UM" title="University of Michigan"><img src="logos/umich.png" data-domain="umich.edu" alt="" width="24" height="24"></span>
+            <h3>Undergraduate Research Assistant</h3>
+          </div>
           <span class="meta">Sept 2025 — Present · Ann Arbor, MI</span>
         </div>
         <div class="card-body">
+          <p class="sub">Includes communications and telemetry design for a Sun&ndash;Earth L1 halo-orbit spacecraft concept (AERO 483 preliminary design review).</p>
           <ul>
             <li>Contribute to RF communications research supporting a CubeSat mission and space-weather monitoring work.</li>
             <li>Test RF components using a vector network analyzer (VNA) to verify impedance matching and evaluate S-parameters.</li>
             <li>Develop STK and MATLAB simulations to evaluate link budgets and ground-station visibility.</li>
+            <li>Selected a dual X-band / Ka-band architecture for the L1 concept, with Ka-band as the primary downlink and X-band as backup, based on a trade study of flight hardware.</li>
+            <li>Modeled received power, carrier-to-noise density ratio, link margin, and data rate against distance from Earth, verifying 14.6&nbsp;dB (Ka-band) and 5.9&nbsp;dB (X-band) margin at 1.5 million km and compatibility with 34&nbsp;m DSN antennas.</li>
           </ul>
+          <div class="card-imgs">
+            <figure>
+              <img src="comms_figures/comms_fig4_received_power.png" alt="Received power vs. distance for X-band and Ka-band links" loading="lazy">
+              <figcaption>Received power vs. distance. Ka-band sustains higher power across the full range.</figcaption>
+            </figure>
+            <figure>
+              <img src="comms_figures/comms_fig5_cn0_ratio.png" alt="Carrier-to-noise density ratio vs. distance for X-band and Ka-band" loading="lazy">
+              <figcaption>Carrier-to-noise density ratio (C/N0) vs. distance.</figcaption>
+            </figure>
+            <figure>
+              <img src="comms_figures/comms_fig6_link_margin.png" alt="Communication link margin vs. distance from Earth" loading="lazy">
+              <figcaption>Link margin vs. distance. Both bands clear threshold at L1.</figcaption>
+            </figure>
+            <figure>
+              <img src="comms_figures/comms_fig7_margin_vs_datarate.png" alt="Link margin vs. data rate at the L1 operating distance" loading="lazy">
+              <figcaption>Link margin vs. data rate at the L1 operating distance.</figcaption>
+            </figure>
+            <figure>
+              <img src="comms_figures/comms_fig8_dish_diameter.png" alt="Ground dish diameter vs. Eb/N0 at 1.5 million km" loading="lazy">
+              <figcaption>Ground dish diameter vs. Eb/N0. Confirms DSN compatibility.</figcaption>
+            </figure>
+          </div>
         </div>
       </div>
 
@@ -465,5 +473,28 @@
   </footer>
 
 </main>
+
+<script>
+/* Logos: use a file in /logos if one exists, otherwise a favicon-service
+   image for the organisation's domain, otherwise show initials. */
+(function () {
+  var imgs = document.querySelectorAll('.logo img[data-domain]');
+  Array.prototype.forEach.call(imgs, function (img) {
+    var tile = img.parentNode;
+    var fellBack = false;
+    function fail() {
+      if (!fellBack) {
+        fellBack = true;
+        img.src = 'https://www.google.com/s2/favicons?domain=' +
+                  encodeURIComponent(img.getAttribute('data-domain')) + '&sz=128';
+      } else {
+        tile.classList.add('no-img');
+      }
+    }
+    img.addEventListener('error', fail);
+    if (img.complete && img.naturalWidth === 0) { fail(); }
+  });
+})();
+</script>
 </body>
 </html>
